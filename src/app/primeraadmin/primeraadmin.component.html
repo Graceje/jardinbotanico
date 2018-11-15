@@ -14,7 +14,42 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Rregistro de evento</button>   
                     <br>   
                     <br>     
-                  <app-tableeventos></app-tableeventos>
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                      <thead>
+                        <tr>
+                          <th>Titulo</th>
+                          <th>Hora</th>
+                          <th>Fecha</th>
+                          <th>Área</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Visita de gobernador</td>
+                          <td>10:00am</td>
+                          <th>10/10/18</th>
+                          <th>Aula educativa</th>
+                        </tr>
+                       
+                        <tr>
+                            <td>vista uas</td> 
+                           <td>10:00am</td>
+                           <th>10/10/18</th>
+                           <td>grace</td>
+                  
+                        </tr>
+                        <tr>
+                         
+                            <td>vista uas</td>
+                            <td>Plantario</td>
+                            <td>10:00am</td>
+                            <th>10/10/18</th>
+                  
+                        </tr>
+                      </tbody>
+                    </table>
+                  
                   
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -26,32 +61,32 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                              <form>
+                             
                                     <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Nombre de evento:</label>
-                                    <input type="text" class="form-control" id="nombre">
+                                    <input type="text" class="form-control" [(ngModel)]="events.titulo" name="titulo">
                                     </div>
                                     <div class="row">
                                             <div class="col">
-                                            <input class="form-control" type="date" value="2011-08-19" id="fecha">
+                                            <input class="form-control" type="date" value="2011-08-19" id="fecha"  [(ngModel)]="events.fecha" name="fecha">
                                             </div>
                                             <div class="col">
-                                                <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+                                                <input class="form-control" type="time" value="13:45:00"  [(ngModel)]="events.tiempo" name="tiempo">
                                             </div>
                                     </div>
                                     <div class="form-group">
                                             <label for="message-text" class="col-form-label">Descripcion:</label>
-                                            <textarea class="form-control" id="message-text"></textarea>
+                                            <textarea class="form-control" id="message-text"  [(ngModel)]="events.descripcion" name="descripcion"></textarea >
                                     </div>
                                     <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                                            <label class="custom-file-label" for="customFileLang">Seleccionar imagen de evento</label>
+                                            <input type="file" class="custom-file-input" id="customFileLang" lang="es" [(ngModel)]="events.imagen" name="imagen">
+                                            <label class="custom-file-label" for="customFileLang"  >Seleccionar imagen de evento</label>
                                     </div>
-                              </form>
+                            
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                              <button type="button" class="btn btn-primary">Guardar</button>
+                              <button type="button" class="btn btn-primary" (click)="alta()">Guardar</button>
                             </div>
                           </div>
                         </div>
