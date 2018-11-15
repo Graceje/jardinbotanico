@@ -1,0 +1,170 @@
+<app-header></app-header>
+<br>
+<br>
+
+    <div class="container">
+        
+            <div class="row ">
+                <div class="col-sm-6 ">
+                        <fieldset class="form-group row">
+                                <legend >Como nos visita?</legend>
+                                <div class="col-sm-10">
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                      Turista
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                     Insititucion
+                                    </label>
+                                  </div>
+                                </div>
+                              </fieldset>
+                       
+                        <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Titulo</label>
+                                <div class="col-sm-10">
+                                  <input [(ngModel)]="vis.visita.titulo" type="text" class="form-control" id="titulo" placeholder="Titulo de reservación">
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Institución</label>
+                                <div class="col-sm-10">
+                                  <input type="text" [(ngModel)]="vis.visita.institucion"  class="form-control" id="nombre_inst" placeholder="Nombre de institucion">
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Contacto</label>
+                                <div class="col-sm-10">
+                                  <input type="text" [(ngModel)]="vis.visita.contacto"  class="form-control" id="inputEmail3" placeholder="Nombre de contacto">
+                                </div>
+                        </div>
+                        <div class="form-inline row">
+                                <label class="col-sm-2 col-form-lab" for="inlineFormCustomSelect">Cantidad de</label>
+                                <div class="col-sm-10">
+                                            <input class="form-control" type="number" [(ngModel)]="vis.visita.ninos"  placeholder="Niños" >
+                                            <input  class="form-control" type="number" [(ngModel)]="vis.visita.adultos"  placeholder="Adultos" >
+                                           
+                                </div>
+                                       
+
+                                
+                                
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                                <label for="tel" class="col-sm-2 col-form-label">Telefono</label>
+                                <div class="col-sm-10">
+                                        <input  [(ngModel)]="vis.visita.telefono"  class="form-control" type="tel" value="1-(555)-555-5555" id="tel">
+ 
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                  <input [(ngModel)]="vis.visita.email"  type="email" class="form-control" id="email" placeholder="Email">
+                                </div>
+                        </div>
+                       
+
+
+                </div>
+                <div class="col-sm-6">
+                    <br>
+                    <br>
+                             <div class="form-group row">
+                                <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                                <div class="col-10">
+                                  <input [(ngModel)]="vis.visita.fecha"  class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                            </div>
+                              </div>
+                                <div class="form-group row">
+                                <label for="example-time-input" class="col-2 col-form-label">Time</label>
+                                <div class="col-10">
+                                  <input [(ngModel)]="vis.visita.hora"  class="form-control" type="time" value="13:45:00" id="example-time-input">
+                                </div>
+                              </div>
+                              <br>
+                              <fieldset class="form-group row">
+                                <legend class="col-form-legend col-sm-2">Recorrido</legend>
+                                <div class="col-sm-10">
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input [(ngModel)]="vis.visita.Plantario"  class="form-check-input" type="checkbox" name="plantario" id="plantario" value="option1" checked>
+                                      Plantario
+                                    </label>
+                                  </div>
+                                  <br>
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input [(ngModel)]="vis.visita.Mariposario"  class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios2" >
+                                      Mariposario
+                                    </label>
+                                  </div>
+                                  <br>
+                                  <div class="form-check disabled">
+                                    <label class="form-check-label">
+                                      <input [(ngModel)]="vis.visita.Recinto_educativo"  class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3"  >
+                                      Recinto Educativo
+                                    </label>
+                                  </div>
+                                  <br>
+                                  <div class="form-check disabled">
+                                        <label class="form-check-label">
+                                          <input [(ngModel)]="vis.visita.Jardin_tematico" class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3"  >
+                                          Jardines tematicos
+                                        </label>
+                                      </div>
+                                </div>
+                              </fieldset>
+
+                              <h6>Espera tu respuesta en tu correo electronico</h6>
+                              <div class="form-group row">
+                                <div class="offset-sm-4 col-sm-10">
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Reservar visita</button>
+                                </div>
+                              </div>
+                              <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Registro de visita</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <h4> Espera tu respesta en tu correo electronico que proporcionaste.</h4>
+                                            <hr>
+                                            Gracias por tu reservación-Jardin Botanico Benjamin Francis Johnston.
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button"(click)="onguardar()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                </div>
+
+            </div>
+       
+
+        
+        
+
+    </div>
+    <br>
+<app-footer></app-footer>
+      <!-- Footer -->
+                
+            
+    
+    
+
+

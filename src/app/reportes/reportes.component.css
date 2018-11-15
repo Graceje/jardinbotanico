@@ -1,0 +1,18 @@
+canvas{
+    height: 300px !important;
+}
+.btn{
+    margin: 5px;
+}
+.card{
+    margin: 0px 0px 0px 0px;
+}
+button.btn.btn-fill.btn-rose.float-right {
+    margin-top: 30px;
+}
+.modal-body {
+    padding: 3px;
+}
+.card.tabla.mb-3{
+    margin: 10px 0px 0px 0px;
+}

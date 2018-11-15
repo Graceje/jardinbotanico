@@ -1,0 +1,94 @@
+<app-headeradmin></app-headeradmin>
+<br>
+<br>
+<div class="container" *ngIf=notis>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label >Titulo</label>
+    <input type="text" class="form-control" name="nombre" id="nombre" value="{{notis.titulo}}" >
+  </div>
+  <div class="form-group col-md-6">
+    <label >Institucion</label>
+    <input type="text" class="form-control" name="nombre_cien" id="nombre_cien" value="{{notis.institucion}}" >
+  </div>
+</div>
+
+ <div class="form-row">
+  <div class="form-group col-md-6">
+    <label >Contacto</label>
+    <input type="text" class="form-control" name="habitad" id="habitad" value="{{notis.contacto}}" >
+  </div>
+  <div class="form-group col-md-6">
+    <label >Niños:</label>
+    <input type="text" class="form-control" name="origen" id="origen" value="{{notis.ninos}}" >
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label >Adultos:</label>
+    <input type="text" class="form-control" name="especie" id="especie" value="{{notis.adultos}}" >
+  </div>
+  <div class="form-group col-md-6">
+    <label >Telefono:</label>
+    <input type="text" class="form-control" name="ubicacion" id="ubicacion" value="{{notis.telefono}}">
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label >Correo:</label>
+    <input type="text" class="form-control" name="especie" id="especie" value="{{notis.correo}}" >
+  </div>
+  <div class="form-group col-md-6">
+    <label >Fecha</label>
+    <input type="text" class="form-control" name="ubicacion" id="ubicacion"  value="{{notis.fecha}}">
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label >Hora</label>
+    <input type="text" class="form-control" name="especie" id="especie" value="{{notis.tiempo}}" >
+  </div>
+  <div class="form-group col-md-6">
+    <label >Area</label>
+    <input type="text" class="form-control" name="ubicacion" id="ubicacion" value="{{notis.recorrido}}">
+  </div>
+</div>
+
+<div class="form-row col-md-12 ">
+  <div class="form-group col-md-3">
+    <button type="submit" class="btn btn-success">Aceptar</button>
+  </div>
+  <div class="form-group col-md-4">
+    <button type="submit" class="btn btn-success">Rechazar</button>
+  </div>
+  <div class="form-group col-md-4">
+    <button type="submit" class="btn btn-success">Rechazar</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+<div class="container">
+  <h1 class="formuh1">Contacto rápido.</h1>
+   <form id="form1" class="well col-lg-12" action="enviar.php" method="post" name="form1">
+     <div class="row">
+      <div class="col-lg-6">
+       <label>Nombre*</label> <input id="Nombre" class="form-control" type="text" name="Nombre" /> 
+       <label>Email*</label> <input id="Email" class="form-control" type="email" name="Email" />
+      </div>
+       <div class="col-lg-6"><label>Mensaje*</label> 
+        <textarea id="Mensaje" class="form-control" name="Mensaje" rows="4"></textarea>
+       </div>
+       <button class="btn btn-default pull-right" type="submit">Enviar</button>
+     </div>
+   </form>
+ </div>

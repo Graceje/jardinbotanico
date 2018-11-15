@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<div>
+    <div class="header-dark">
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search" style="background-color:rgb(0,0,0)">
+            <div class="container-fluid"><a class="navbar-brand" href="#"><img src="../../assets/img/Jardin-botanico-los-mochis.png" style="height:60px;"></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+              <div
+              class="collapse navbar-collapse" id="navcol-1">
+              <ul class="nav navbar-nav ml-auto">
+                  <li class="nav-item" role="presentation">
+                      <a class="nav-link" href="#" style="color:rgb(255,255,255);" routerLink="/primera">
+                        <i class="fas fa-home fa-3x"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                      <a class="nav-link" href="#" style="color:rgb(255,255,255);" routerLink="/reportes">
+                        <i class="fas fa-sticky-note fa-3x"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                      <a class="nav-link" href="#" style="color:rgb(255,255,255);" routerLink="/calendario">
+                        <i class="fas fa-calendar-alt fa-3x"></i>
+                      </a>
+                  </li>
+                  <li class="dropdown" role="presentation">
+                      <a class="dropdown-toggle nav-link dropdown-toggle" style="color:rgb(255,255,255);" data-toggle="dropdown" aria-expanded="false"  >
+                        <i class="fas fa-bell fa-3x">            
+                            </i><span class="badge badge-pill badge-danger">4</span>    
+                      </a>
+                      <div class="dropdown-menu" role="menu"  >
+                        <a class="dropdown-item" *ngFor="let notis of notis" role="presentation" routerLink="/correo/{{notis.idvisitas}}" >{{notis.idvisitas}} - {{notis.titulo}}</a>
+                    
+                    </div>
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle nav-link dropdown-toggle pasar" data-toggle="dropdown" aria-expanded="false" href="#" style=" color:rgb(255,255,255); font-size: 20px;">Grace Valenzuela Camacho</a>
+                      <div class="dropdown-menu" role="menu" style="margin-left: 120px; width: 50px;">
+                          <a class="dropdown-item" role="presentation" href="#" style="font-size: 20px;  ">Cerrar sesión</a>
+                          
+                        </div>
+                  </li>
+              </ul>
+            </div>
+    </div>
+    </nav>
+</div>
+</div>
+
+
+

@@ -1,0 +1,158 @@
+<app-headeradmin></app-headeradmin>
+<br>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+<br>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10 col-sm-12" >
+        <div class="col-sm-12" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);">
+            <h2 class="text-center">Reportes de visitas</h2>
+            <div class="form-inline row">
+                <label  for="inlineFormCustomSelect">Reporte por: </label>
+                    <div class="col-sm-10">
+                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                                <option selected>Selecciona...</option>
+                                <option value="1">Día</option>
+                                <option value="2">Mes</option>
+                                <option value="3">Año</option>
+                            </select>
+                          </div>                   
+            </div>       
+            <app-table></app-table>
+        </div>
+        <br>
+        <br>
+        <div class="col-sm-12" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);">
+            <h2 class="text-center">Reportes de Eventos</h2>
+            <div class="form-inline row">
+                <label  for="inlineFormCustomSelect">Reporte por: </label>
+                    <div class="col-sm-10">
+                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                                <option selected>Selecciona...</option>
+                                <option value="1">Día</option>
+                                <option value="2">Mes</option>
+                                <option value="3">Año</option>
+                            </select>
+                          </div>
+       
+                
+            </div>
+            
+           
+            <app-tableeventos></app-tableeventos>
+    
+    
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="col-sm-12  text-center" >
+          <h2>Reporte en Graficas</h2>
+        
+          <div class="row">
+                <div class="col-sm-6" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);">
+                  <h4> Meses mas visitados</h4>
+                    <div >
+                        <canvas baseChart
+                                [datasets]="barChartData"
+                                [labels]="barChartLabels"
+                                [options]="barChartOptions"
+                                [legend]="barChartLegend"
+                                [chartType]="barChartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)"></canvas>
+                      </div>
+                </div>
+                <div class="col-sm-6" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);"> 
+                  <h4>Áreas mas visitadas</h4>    
+                    <div >
+                        <canvas baseChart
+                                [data]="pieChartData"
+                                [labels]="pieChartLabels"
+                                [chartType]="pieChartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)"></canvas>
+                      </div>
+                </div>
+              </div>
+              <br>
+              <br>
+          <div class="row" > 
+            <div class="col-sm-12" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);" >
+                <h4> Cantidad de Vsitas de niños y jovenes por área</h4>
+                  <div>
+                      <canvas baseChart
+                              [datasets]="barChartData"
+                              [labels]="barChartLabels"
+                              [options]="barChartOptions"
+                              [legend]="barChartLegend"
+                              [chartType]="barChartType"
+                              (chartHover)="chartHovered($event)"
+                              (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+              </div>
+            </div>
+            
+        </div>
+
+    </div>
+    
+    <div class="col-md-2 col-sm-12 ">
+           
+           
+            <div class="row">
+                <div class="card text-white bg-dark" style="width: 17rem;">
+                    <img class="card-img-top" src="../../assets/img/aula.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">DESCARGA REPORTE DE VISITAS/EVENTOS</h5>
+                      <p class="card-text">Descarga la tabla de reporte de visitas y eventos del tipo de reporte que seleccionaste, dia, mes o año, a un archivo PDF.</p>
+                      <a href="#" class="btn btn-primary">Descarga PDF</a>
+                    </div>
+                  </div>
+             
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Reporte Meses mas visitados</div>
+                    <div class="card-body">
+                      <h5 class="card-title">Descarga grafica de meses mas visitados</h5>
+                      <p class="card-text"> Descarga la grafica de reporte de los meses mas visitados en el Jardin Botanico.</p>
+                      <a href="#" class="btn btn-primary">Descargar PDF</a>
+                    </div>
+                  </div>
+
+            </div>
+            <div class="row">
+                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Reporte grafica de área mas visitada</div>
+                    <div class="card-body">
+                      <h5 class="card-title">Descarga grafica de área mas visitadas</h5>
+                      <p class="card-text">Descarga la grafica de reporte de las áreas mas visitadas del Jardin Botanico.</p>
+                      <a href="#" class="btn btn-primary">Descargar PDF</a>
+                    </div>
+                  </div>
+
+            </div>
+            <div class="row">
+                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Reporte grafica de cantidad de niños/adultos </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Descar grafica de cantidad de niños/adultos</h5>
+                      <p class="card-text">Descarga la grafica de reporte de la cantidad de niños y adultos que visitan cada área del Jardin Botanico.</p>
+                      <a href="#" class="btn btn-primary">Descargar PDF</a>
+                    </div>
+                  </div>
+
+            </div>
+
+        
+    </div>
+   
+  </div>  
+  <br>
+    <br> 
+</div>
