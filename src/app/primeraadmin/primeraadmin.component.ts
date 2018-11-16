@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./primeraadmin.component.css']
 })
 export class PrimeraadminComponent implements OnInit {
-  eventos=null;
+  bailame=null;
   events={
- 
+    ideventos:null,
     titulo:null,
     fecha:null,
     tiempo:null,
@@ -17,20 +17,48 @@ export class PrimeraadminComponent implements OnInit {
     imagen:null,
 
   }
+ 
   constructor( private eventosservice: EventosService) {
   
    }
 
   ngOnInit() {
+    this.geteventos();
   }
-  
+
+  geteventos(){
+    this.eventosservice.geteventos().subscribe(result => this.bailame = result);
+  }
   alta() {
     console.log(this.events),
     this.eventosservice.alta(this.events).subscribe(datos => {
       if (datos['resultado']=='OK') {
         alert(datos['mensaje']);
+        this.geteventos();
         
 
+      }
+    });
+  }
+  seleccione(ideventos) {
+    this.eventosservice.seleccione(ideventos).subscribe(result => this.events = result[0]);
+    
+  }
+  
+  modificacion() {
+    this.eventosservice.modificacion(this.events).subscribe(datos => {
+      if (datos['resultado']=='OK') {
+        alert(datos['mensaje']);
+        this.geteventos();
+      }
+    });    
+  }
+  delete(ideventos) {
+    
+    this.eventosservice.delete(ideventos).subscribe(datos => {
+      if (datos['resultado']=='OK') {
+        alert(datos['mensaje']);
+        this.geteventos();
       }
     });
   }

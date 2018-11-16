@@ -1,14 +1,15 @@
 <app-headeradmin></app-headeradmin>
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-<div class="container">
-    <form action="" method="get">
-        
 
-        <div class="container">
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<br>
+<br>
+<div class="container-fluid">
+    <form action="" method="get">
+        <div >
             <br>
             <br>
             <div class="row">
-              <div class="col-sm-12 col-md-12" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);">
+              <div class="col-sm-10 col-md-10" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);">
                     <br> 
                     <h4 class="text-center"> Listado de eventos proximos</h4>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Rregistro de evento</button>   
@@ -17,40 +18,32 @@
                     <table datatable [dtOptions]="dtOptions" class="row-border hover">
                       <thead>
                         <tr>
-                          <th>Titulo</th>
-                          <th>Hora</th>
-                          <th>Fecha</th>
-                          <th>Área</th>
-                          
+                         
+                          <td>Titulo</td>
+                          <td>Fecha</td>
+                          <td>Hora</td>
+                          <td>Descripción</td>
+                          <td width=75 align="center">Action</td>
+                          <td width=75 align="center">Action</td>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Visita de gobernador</td>
-                          <td>10:00am</td>
-                          <th>10/10/18</th>
-                          <th>Aula educativa</th>
+                        <tr *ngFor="let event of bailame">
+                        
+                          <td>{{event.titulo}}</td>
+                          <td>{{event.fecha}}</td>
+                          <td>{{event.tiempo}}</td>
+                          <td>{{event.descripcion}}</td>
+                          <td><button class="btn btn-danger" (click)="delete(event.ideventos)" ><i class="fas fa-trash"></i></button></td>
+                          <td><button class="btn btn-success"  data-toggle="modal" data-target="#exampleModal2" (click)="seleccione(event.ideventos)" ><i class="fas fa-edit"></i></button></td> 
+                         
                         </tr>
                        
-                        <tr>
-                            <td>vista uas</td> 
-                           <td>10:00am</td>
-                           <th>10/10/18</th>
-                           <td>grace</td>
-                  
-                        </tr>
-                        <tr>
-                         
-                            <td>vista uas</td>
-                            <td>Plantario</td>
-                            <td>10:00am</td>
-                            <th>10/10/18</th>
-                  
-                        </tr>
+                       
                       </tbody>
                     </table>
                   
-                  
+                  <!-- MODAL DE REGISTRO  -->
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
@@ -90,47 +83,58 @@
                             </div>
                           </div>
                         </div>
-                      </div>
-
+                  </div>
+                     <!-- MODAL DE EDICION -->
+                     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModal2Label">Modificación de Evento</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                             
+                                    <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Nombre de evento:</label>
+                                    <input type="text" class="form-control" [(ngModel)]="events.titulo" name="titulo">
+                                    </div>
+                                    <div class="row">
+                                            <div class="col">
+                                            <input class="form-control" type="date" value="2011-08-19" id="fecha"  [(ngModel)]="events.fecha" name="fecha">
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control" type="time" value="13:45:00"  [(ngModel)]="events.tiempo" name="tiempo">
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Descripcion:</label>
+                                            <textarea class="form-control" id="message-text"  [(ngModel)]="events.descripcion" name="descripcion"></textarea >
+                                    </div>
+                                    <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFileLang" lang="es" [(ngModel)]="events.imagen" name="imagen">
+                                            <label class="custom-file-label" for="customFileLang"  >Seleccionar imagen de evento</label>
+                                    </div>
+                            
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                              <button type="button" class="btn btn-primary" (click)="modificacion()">Modificar</button>
+                            </div>
+                          </div>
+                        </div>
+                  </div>
               </div>
               
-            </div>
-            <br>
-            <br>
-            <div class="row">
-                <div class="col-sm-12 col-md-12" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);">
-                    <div class="panel panel-default">
-                  
-                        <div class="panel-heading">REGISTRO DIRECTO</div>
-                        <div class="panel-body">
-                              
-                              <fieldset >    	
-                            <legend>Áreas</legend>
-                            
-                            <div class="panel panel-default">
-                              <div class="panel-body">
-                                  <div><label style="margin-left:150px;">Plantario</label><button class="btn btn-primary" type="button" style="margin-left:300px;width:300px;" routerLink="/registroadmin">Registro</button></div>
-                                  <br>
-                                  <div><label style="margin-left:150px;">Jardiner Tematicos</label><button class="btn btn-primary" type="button" style="margin-left:230px;width:300px;" routerLink="/registroadmin">Registro</button></div>
-                                  <br>
-                                  <div><label style="margin-left:150px;">Mariposario</label><button class="btn btn-primary" type="button" style="margin-left:280px;width:300px;" routerLink="/registroadmin">Registro</button></div>
-                                  <br>
-                                  <div><label style="margin-left:150px;">Recinto Educativo</label><button class="btn btn-primary" type="button" style="margin-left:240px;width:300px;" routerLink="/registroadmin">Registro</button></div>
-                              
-                                      
-                                
-                              </div>
-                            </div>
-                            
-                          </fieldset>				
-                          
-                          <div class="clearfix"></div>
-                              </div>
-                                  
+                <div class="col-sm-2 col-md-2" >
+                  <div class="text-center" style=" padding-top: 100px; ">
+                      <button type="button" class="btn btn-primary btn-lg btn-block" style="height:250px;"routerLink="/registroadmin"><span class="fas fa-pen fa-4x"  ></span><h4>Registro Visita</h4></button>
                   </div>
+                  
                 </div>
               
-            </div>
+              </div>
         </div>
         <br/>
     </form>
