@@ -82,33 +82,73 @@
                         <fieldset class="form-group row">
                           <legend class="col-form-legend col-sm-2">Recorrido</legend>
                           <div class="col-sm-10">
-                            <div class="form-check">
+
+                            <div class="form-check" *ngIf="!notis.plantario; else plantarioactivado">
                               <label class="form-check-label">
-                                <input   class="form-check-input"  type="checkbox" name="plantario" id="plantario" value="plantario"  >
+                                <input   class="form-check-input"  type="checkbox" name="plantario" id="plantario" value="plantario"   >
                                 Plantario
                               </label>
                             </div>
+                            <ng-template #plantarioactivado >
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input   class="form-check-input"  type="checkbox" name="plantario" id="plantario" value="plantario"  checked  >
+                                      Plantario
+                                    </label>
+                                  </div>
+                            </ng-template>
+
+
                             <br>
-                            <div class="form-check">
+                            <div class="form-check" *ngIf="!notis.mariposario; else mariposarioactivado">
                               <label class="form-check-label">
                                 <input   class="form-check-input" type="checkbox"   id="gridRadios2" name="mariposario" value="mariposario" >
                                 Mariposario
                               </label>
                             </div>
                             <br>
-                            <div class="form-check disabled">
+                            <ng-template #mariposarioactivado >
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input   class="form-check-input" type="checkbox"   id="gridRadios2" name="mariposario" value="mariposario" checked >
+                                      Mariposario
+                                    </label>
+                                  </div>
+                                  
+                            </ng-template>
+
+                            
+                            <div class="form-check disabled" *ngIf="!notis.Recinto_educativo; else recintoactivado">
                               <label class="form-check-label">
                                 <input  class="form-check-input" type="checkbox"  id="gridRadios3" name="Recinto_educativo" value="recinto educativo">
                                 Recinto Educativo
                               </label>
                             </div>
+                            <ng-template #recintoactivado >
+                                <div class="form-check disabled" >
+                                    <label class="form-check-label">
+                                      <input  class="form-check-input" type="checkbox"  id="gridRadios3" name="Recinto_educativo" value="recinto educativo" checked >
+                                      Recinto Educativo
+                                    </label>
+                                  </div>
+
+                            </ng-template>
+
                             <br>
-                            <div class="form-check disabled">
+                            <div class="form-check disabled" *ngIf="!notis.Jardin_tematico; else jardinactivado">
                                   <label class="form-check-label">
-                                    <input  class="form-check-input" type="checkbox"  id="gridRadios3" name="Jardin_tematico" value="jardin tematico" >
+                                    <input  class="form-check-input" type="checkbox"  id="gridRadios3" name="Jardin_tematico" value="jardin tematico"  >
                                     Jardines tematicos
                                   </label>
                                 </div>
+                                <ng-template #jardinactivado>
+                                  <div class="form-check disabled">
+                                    <label class="form-check-label">
+                                      <input  class="form-check-input" type="checkbox"  id="gridRadios3" name="Jardin_tematico" value="jardin tematico" checked >
+                                      Jardines tematicos
+                                    </label>
+                                  </div>
+                                </ng-template>
                           </div>
                         </fieldset>
 
