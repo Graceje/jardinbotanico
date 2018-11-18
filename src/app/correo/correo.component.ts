@@ -23,8 +23,10 @@ export class CorreoComponent implements OnInit {
   getnotificacion(){
     var id = this.route.snapshot.params['id'];
     this.notificacionesservice.notificacioness(id)
-      .subscribe(notis =>{
-          this.notis = notis[0];
+      .subscribe(notisk =>{
+        console.log(notisk);
+        console.log("este")
+          this.notis = notisk[0];
           })
   };
 
