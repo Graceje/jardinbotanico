@@ -22,5 +22,11 @@ export class NotificacionesService {
   pendientes(){
     return this._http.get('http://localhost/api-jardin/pendientes_notificacion.php/');
   }
+  modificacion(notis) {
+    return this._http.post('http://localhost/api-jardin/update_notificacion.php', JSON.stringify(notis));    
+  }
+  delete(notis) {
+    return this._http.post('http://localhost/api-jardin/delete_notificacion.php', JSON.stringify(notis));    
+  }
 
 }

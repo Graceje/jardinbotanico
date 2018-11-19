@@ -10,6 +10,7 @@ import {NotificacionesService} from '../services/notificaciones.service';
 export class CorreoComponent implements OnInit {
 
   notis:{
+    
     titulo:string,
     institucion:string,
     contacto:string,
@@ -29,28 +30,46 @@ export class CorreoComponent implements OnInit {
      private router: Router,
     private route: ActivatedRoute,
     private notificacionesservice: NotificacionesService ) { 
-      this.notis = {
-        titulo:'',
-        institucion:'',
-        contacto:'',
-        adultos:'',
-        telefono:'',
-        correo:'',
-        fecha:'',
-        tiempo:'',
-        plantario: false,
-        mariposario: false,
-        Recinto_educativo: false,
-        Jardin_tematico:false
-      };
+ 
     }
 
   ngOnInit() {
       this.getnotificacion();
       
   }
- 
+  
+  modificacion() {
+    this.notificacionesservice.modificacion(this.notis).subscribe(datos => {
+      if (datos['resultado']=='OK') {
+        alert(datos['mensaje']);
+        
+      }
+    });    
+  }
+  delete() {
+    this.notificacionesservice.delete(this.notis).subscribe(datos => {
+      if (datos['resultado']=='OK') {
+        alert(datos['mensaje']);
+        
+      }
+    });    
+  }
   getnotificacion(){
+    this.notis = {
+        
+      titulo:'',
+      institucion:'',
+      contacto:'',
+      adultos:'',
+      telefono:'',
+      correo:'',
+      fecha:'',
+      tiempo:'',
+      plantario: false,
+      mariposario: false,
+      Recinto_educativo: false,
+      Jardin_tematico:false
+    };
     var id = this.route.snapshot.params['id'];
     this.notificacionesservice.notificacioness(id)
       .subscribe(notisk =>{
