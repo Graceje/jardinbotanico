@@ -9,20 +9,40 @@ import {NgForm } from '@angular/forms/src/directives/ng_form';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-   vis: Visitas;
+  
+   visita=null;
+   vis={
+     titulo:null,
+     institucion:null,
+     contacto:null,
+     adultos:null,
+     telefono:null,
+     correo:null,
+     fecha:null,
+     tiempo:null,
+     plantario:null,
+     mariposario:null,
+     Jardin_tematico : null,
+     Recinto_educativo: null,
+ 
+ 
+   }
   constructor(private visitasuService: VisitasUService) {
-    this.vis= new Visitas;
+   
    }
 
   ngOnInit() {
-    //this.visitasuService.getvisitas().subscribe(visitas => {
-      //console.log(visitas);
-    //} )
+   
   }
-  onguardar(){
-    
-    
+  alta() {
 
+    this.visitasuService.alta(this.vis).subscribe(datos => {
+      if (datos['resultado']=='OK') {
+        alert(datos['mensaje']);
+       
+
+      }
+    });
   }
 
 }
