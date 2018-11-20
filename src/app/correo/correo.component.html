@@ -112,7 +112,7 @@
                             <ng-template #plantarioactivado >
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                      <input   class="form-check-input"  type="checkbox" name="plantario" id="plantario" value="plantario"  checked  >
+                                      <input   class="form-check-input" [(ngModel)]="notis.plantario"  type="checkbox" name="plantario" id="plantario" value="plantario"  checked  >
                                       Plantario
                                     </label>
                                   </div>
@@ -122,7 +122,7 @@
                             <br>
                             <div class="form-check" *ngIf="!notis.mariposario; else mariposarioactivado">
                               <label class="form-check-label">
-                                <input   class="form-check-input" type="checkbox"   id="gridRadios2" name="mariposario" value="mariposario" >
+                                <input   class="form-check-input" type="checkbox" [(ngModel)]="notis.mariposario"  id="gridRadios2" name="mariposario" value="mariposario" >
                                 Mariposario
                               </label>
                             </div>
@@ -130,7 +130,7 @@
                             <ng-template #mariposarioactivado >
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                      <input   class="form-check-input" type="checkbox"   id="gridRadios2" name="mariposario" value="mariposario" checked >
+                                      <input   class="form-check-input" type="checkbox" [(ngModel)]="notis.mariposario"  id="gridRadios2" name="mariposario" value="mariposario" checked >
                                       Mariposario
                                     </label>
                                   </div>
@@ -140,14 +140,14 @@
                             
                             <div class="form-check disabled" *ngIf="!notis.Recinto_educativo; else recintoactivado">
                               <label class="form-check-label">
-                                <input  class="form-check-input" type="checkbox"  id="gridRadios3" name="Recinto_educativo" value="recinto educativo">
+                                <input  class="form-check-input" type="checkbox"  id="gridRadios3" [(ngModel)]="notis.Recinto_educativo" name="Recinto_educativo" value="recinto educativo">
                                 Recinto Educativo
                               </label>
                             </div>
                             <ng-template #recintoactivado >
                                 <div class="form-check disabled" >
                                     <label class="form-check-label">
-                                      <input  class="form-check-input" type="checkbox"  id="gridRadios3" name="Recinto_educativo" value="recinto educativo" checked >
+                                      <input  class="form-check-input" type="checkbox"  id="gridRadios3" [(ngModel)]="notis.Recinto_educativo" name="Recinto_educativo" value="recinto educativo" checked >
                                       Recinto Educativo
                                     </label>
                                   </div>
@@ -157,21 +157,21 @@
                             <br>
                             <div class="form-check disabled" *ngIf="!notis.Jardin_tematico; else jardinactivado">
                                   <label class="form-check-label">
-                                    <input  class="form-check-input" type="checkbox"  id="gridRadios3" name="Jardin_tematico" value="jardin tematico"  >
+                                    <input  class="form-check-input" type="checkbox"[(ngModel)]="notis.Jardin_tematico" id="gridRadios3" name="Jardin_tematico" value="jardin tematico"  >
                                     Jardines tematicos
                                   </label>
                                 </div>
                                 <ng-template #jardinactivado>
                                   <div class="form-check disabled">
                                     <label class="form-check-label">
-                                      <input  class="form-check-input" type="checkbox"  id="gridRadios3" name="Jardin_tematico" value="jardin tematico" checked >
+                                      <input  class="form-check-input" type="checkbox" [(ngModel)]="notis.Jardin_tematico" id="gridRadios3" name="Jardin_tematico" value="jardin tematico" checked >
                                       Jardines tematicos
                                     </label>
                                   </div>
                                 </ng-template>
                           </div>
                         </fieldset>
-
+                        
                         
                         <div class="form-group row">
                           <div class="offset-sm-4 col-sm-10">

@@ -79,7 +79,7 @@ export class CorreoComponent implements OnInit {
             const element = notisk[i];
             if (element){
               console.log(element.nombre)
-              if(element.nombre == 'Jardin_tematico'){
+              if(element.nombre == 'jardin tematico '){
                 this.notis.Jardin_tematico=true;
               } else if(element.nombre == 'plantario'){
                 this.notis.plantario=true;

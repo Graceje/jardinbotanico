@@ -1,25 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm } from '@angular/forms/src/directives/ng_form';
 import { LoginserviceService } from '../loginservice.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  email;
-  password;
-  constructor(private logingservice: LoginserviceService) {
-    this.email='';
-    this.password='';
+  log={
+   
+    correo:null,
+    pass:null
+  }
+  toki; 
+  constructor(private logingservice: LoginserviceService, private routs:Router) {
+    this.toki = { token: '' };
    }
 
   ngOnInit() {
   }
-
-  iniciar(){
-  
-    
+  login(){
+    this.logingservice.login(this.log.correo,this.log.pass).subscribe( result =>{
+      this.toki = result;
+      localStorage.setItem("correo",this.log.correo);
+      localStorage.setItem('token' , this.toki.token);
+      this.routs.navigateByUrl('primera');
+    });
   }
+
 
 }

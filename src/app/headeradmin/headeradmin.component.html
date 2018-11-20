@@ -24,17 +24,23 @@
                   <li class="dropdown" role="presentation">
                       <a class="dropdown-toggle nav-link dropdown-toggle" style="color:rgb(255,255,255);" data-toggle="dropdown" aria-expanded="false"  >
                         <i class="fas fa-bell fa-3x">            
-                            </i><span class="badge badge-pill badge-danger">4</span>    
+                            </i><span *ngIf="notis.length" class="badge badge-pill badge-danger">{{notis.length}}</span>    
                       </a>
-                      <div class="dropdown-menu" role="menu"  >
-                        <a class="dropdown-item" *ngFor="let notis of notis" role="presentation" routerLink="/correo/{{notis.idvisitas}}" >{{notis.idvisitas}} - {{notis.titulo}}</a>
-                    
+                    <div class="dropdown-menu" role="menu" *ngIf="notis.length; else nohay">
+                        <a class="dropdown-item"  *ngFor="let notis of notis" role="presentation" routerLink="/correo/{{notis.idvisitas}}" >{{notis.idvisitas}} - {{notis.titulo}}</a>
                     </div>
+                    <ng-template #nohay>
+                        <div class="dropdown-menu" role="menu" >
+                            <a class="dropdown-item"  role="presentation" >No hay pendientes</a>    
+                        </div>
+                    </ng-template>
                   </li>
+
+                 
                   <li class="dropdown">
-                      <a class="dropdown-toggle nav-link dropdown-toggle pasar" data-toggle="dropdown" aria-expanded="false" href="#" style=" color:rgb(255,255,255); font-size: 20px;">Grace Valenzuela Camacho</a>
+                      <a class="dropdown-toggle nav-link dropdown-toggle pasar" data-toggle="dropdown" aria-expanded="false" href="#" style=" color:rgb(255,255,255); font-size: 20px;">{{sesion}}</a>
                       <div class="dropdown-menu" role="menu" style="margin-left: 120px; width: 50px;">
-                          <a class="dropdown-item" role="presentation" href="#" style="font-size: 20px;  ">Cerrar sesión</a>
+                          <a class="dropdown-item" role="presentation"  style="font-size: 20px;" (click)="cerrarsesion()">Cerrar sesión</a>
                           
                         </div>
                   </li>

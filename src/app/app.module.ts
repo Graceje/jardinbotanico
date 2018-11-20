@@ -31,6 +31,8 @@ import { NotificacionesService } from '../app/services/notificaciones.service';
 import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import { CorreoComponent } from './correo/correo.component';
+import { AuthService } from '../app/services/auth.service';
+import { Auth2Service } from '../app/services/auth2.service';
 const routes: Routes = [
   {path: '', component: InicioComponent},
   {path: 'registro', component: RegistroComponent},
@@ -39,8 +41,8 @@ const routes: Routes = [
   {path: 'vision-mision', component:VisionMisionComponent},
   {path: 'historia', component:HistoriaComponent},
   {path: 'informacion', component:InformacionComponent},
-  {path: 'login', component:LoginComponent},
-  {path: 'primera', component:PrimeraadminComponent},
+  {path: 'login', component:LoginComponent, canActivate: [Auth2Service]},
+  {path: 'primera', component:PrimeraadminComponent, canActivate: [AuthService]},
   {path: 'registroadmin', component:RegistroadminComponent},
   {path: 'reportes',  component: ReportesComponent},
   {path: 'tabla', component:TableComponent},

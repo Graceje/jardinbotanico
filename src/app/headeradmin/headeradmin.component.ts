@@ -8,13 +8,16 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 })
 export class HeaderadminComponent implements OnInit {
   notis;
+  sesion; 
   constructor(private _notificacionservice: NotificacionesService, private router: Router) { 
-   
+    this.sesion=localStorage.getItem("correo");
   }
 
   ngOnInit() {
     this._notificacionservice.pendientes().subscribe(result =>{ 
+      
       this.notis = result;
+      console.log("aqui");
       console.log(this.notis);
 
     });
@@ -26,6 +29,14 @@ export class HeaderadminComponent implements OnInit {
         console.log(result);
       });  
     },60000);
+  }
+
+  cerrarsesion(){
+    
+    localStorage.removeItem("correo");
+    
+    localStorage.removeItem("token");
+    this.router.navigateByUrl('login');
   }
 
 
