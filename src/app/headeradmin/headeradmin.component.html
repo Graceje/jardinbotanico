@@ -27,7 +27,7 @@
                             </i><span *ngIf="notis.length" class="badge badge-pill badge-danger">{{notis.length}}</span>    
                       </a>
                     <div class="dropdown-menu" role="menu" *ngIf="notis.length; else nohay">
-                        <a class="dropdown-item"  *ngFor="let notis of notis" role="presentation" routerLink="/correo/{{notis.idvisitas}}" >{{notis.idvisitas}} - {{notis.titulo}}</a>
+                        <a class="dropdown-item"  *ngFor="let notis of notis" role="presentation" (click)="recargar(notis.idvisitas)"  >{{notis.idvisitas}} - {{notis.titulo}}</a>
                     </div>
                     <ng-template #nohay>
                         <div class="dropdown-menu" role="menu" >

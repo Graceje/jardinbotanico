@@ -30,11 +30,11 @@ export class CorreoComponent implements OnInit {
      private router: Router,
     private route: ActivatedRoute,
     private notificacionesservice: NotificacionesService ) { 
- 
+      this.getnotificacion();
     }
 
   ngOnInit() {
-      this.getnotificacion();
+      
       
   }
   
@@ -75,7 +75,7 @@ export class CorreoComponent implements OnInit {
       .subscribe(notisk =>{
         console.log(notisk);
           this.notis = notisk[0];
-          for (let i = 1; i < notisk.length+1; i++) {
+         for (let i = 1; i < notisk.length+1; i++) {
             const element = notisk[i];
             if (element){
               console.log(element.nombre)

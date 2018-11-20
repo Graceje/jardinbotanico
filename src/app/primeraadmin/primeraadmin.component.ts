@@ -30,13 +30,17 @@ export class PrimeraadminComponent implements OnInit {
     this.eventosservice.geteventos().subscribe(result => this.bailame = result);
   }
   alta() {
+ 
     console.log(this.events),
     this.eventosservice.alta(this.events).subscribe(datos => {
       if (datos['resultado']=='OK') {
         alert(datos['mensaje']);
         this.geteventos();
         
-
+        
+         
+      
+      
       }
     });
   }

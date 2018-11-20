@@ -44,11 +44,11 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent, canActivate: [Auth2Service]},
   {path: 'primera', component:PrimeraadminComponent, canActivate: [AuthService]},
   {path: 'registroadmin', component:RegistroadminComponent},
-  {path: 'reportes',  component: ReportesComponent},
+  {path: 'reportes',  component: ReportesComponent,canActivate: [AuthService]},
   {path: 'tabla', component:TableComponent},
-  {path: 'calendario', component:CalendarioComponent},
+  {path: 'calendario', component:CalendarioComponent,canActivate: [AuthService]},
   {path: 'calendario2', component:Calendario2Component},
-  {path: 'correo/:id', component:CorreoComponent},
+  {path: 'correo/:id', component:CorreoComponent,canActivate: [AuthService]},
   {path: '**', component: InicioComponent}
   
   

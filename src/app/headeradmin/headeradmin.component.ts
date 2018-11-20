@@ -9,11 +9,15 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 export class HeaderadminComponent implements OnInit {
   notis;
   sesion; 
+
   constructor(private _notificacionservice: NotificacionesService, private router: Router) { 
     this.sesion=localStorage.getItem("correo");
+  
+    
   }
 
   ngOnInit() {
+    
     this._notificacionservice.pendientes().subscribe(result =>{ 
       
       this.notis = result;
@@ -28,9 +32,14 @@ export class HeaderadminComponent implements OnInit {
         this.notis=this.notis.concat(result);
         console.log(result);
       });  
-    },60000);
+    },30000);
   }
 
+  recargar(id){
+    this.router.navigateByUrl("/correo/"+id);
+ 
+    location.reload();
+  }
   cerrarsesion(){
     
     localStorage.removeItem("correo");
