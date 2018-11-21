@@ -28,14 +28,14 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let event of bailame">
+                        <tr *ngFor="let e of bailame">
                         
-                          <td>{{event.titulo}}</td>
-                          <td>{{event.fecha}}</td>
-                          <td>{{event.tiempo}}</td>
-                          <td>{{event.descripcion}}</td>
-                          <td><button class="btn btn-danger" (click)="delete(event.ideventos)" ><i class="fas fa-trash"></i></button></td>
-                          <td><button class="btn btn-success"  data-toggle="modal" data-target="#exampleModal2" (click)="seleccione(event.ideventos)" ><i class="fas fa-edit"></i></button></td> 
+                          <td>{{e.titulo}}</td>
+                          <td>{{e.fecha}}</td>
+                          <td>{{e.tiempo}}</td>
+                          <td>{{e.descripcion}}</td>
+                          <td><button class="btn btn-danger" (click)="delete(e.ideventos)" ><i class="fas fa-trash"></i></button></td>
+                          <td><button class="btn btn-success"  data-toggle="modal" data-target="#exampleModal2" (click)="seleccione(e.ideventos)" ><i class="fas fa-edit"></i></button></td> 
                          
                         </tr>
                        
@@ -118,7 +118,7 @@
                             
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="limpiar()">Cerrar</button>
                               <button type="button" class="btn btn-primary" (click)="modificacion()">Modificar</button>
                             </div>
                           </div>

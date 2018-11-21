@@ -24,6 +24,7 @@ export class PrimeraadminComponent implements OnInit {
 
   ngOnInit() {
     this.geteventos();
+
   }
 
   geteventos(){
@@ -36,17 +37,22 @@ export class PrimeraadminComponent implements OnInit {
       if (datos['resultado']=='OK') {
         alert(datos['mensaje']);
         this.geteventos();
-        
-        
-         
-      
-      
       }
     });
   }
   seleccione(ideventos) {
     this.eventosservice.seleccione(ideventos).subscribe(result => this.events = result[0]);
     
+  }
+  limpiar(){
+    this.events= {
+      ideventos:' ',
+      titulo:' ',
+      fecha:' ',
+      tiempo:' ',
+      descripcion:' ',
+      imagen:' ',
+    }
   }
   
   modificacion() {
@@ -55,7 +61,8 @@ export class PrimeraadminComponent implements OnInit {
         alert(datos['mensaje']);
         this.geteventos();
       }
-    });    
+    });   
+  
   }
   delete(ideventos) {
     
