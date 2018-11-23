@@ -11,11 +11,17 @@
                         <i class="fas fa-home fa-3x"></i>
                     </a>
                   </li>
-                  <li class="nav-item" role="presentation">
-                      <a class="nav-link" href="#" style="color:rgb(255,255,255);" routerLink="/reportes">
-                        <i class="fas fa-sticky-note fa-3x"></i>
-                      </a>
-                  </li>
+                  <li class="dropdown">
+                        <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="font-size:17px;color:rgb(253, 253, 253);">
+                                <i class="fas fa-sticky-note fa-3x"></i>
+                        </a>
+                        
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" role="presentation" routerLink="/reportes">Reporte de visitas del dia</a>
+                            <a class="dropdown-item" role="presentation" >Report de eventos del dia</a>
+                            <a class="dropdown-item" role="presentation" >Informacion</a></div>
+                    </li>
+                 
                   <li class="nav-item" role="presentation">
                       <a class="nav-link" href="#" style="color:rgb(255,255,255);" routerLink="/calendario">
                         <i class="fas fa-calendar-alt fa-3x"></i>

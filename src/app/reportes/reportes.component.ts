@@ -67,15 +67,15 @@ export class ReportesComponent implements  OnInit  {
                 'copy',
                 {
                     extend: 'excel',
-                    title: 'ACTA'
+                    title: 'Reporte'
                 },
                 {
                     extend: 'pdf',
-                    title: 'ACTA'
+                    title: 'Reporte'
                 },
                 {
                     extend: 'print',
-                    title: 'ACTA'
+                    title: 'Reporte'
                 }
             ],
       language: {

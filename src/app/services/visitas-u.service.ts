@@ -15,6 +15,9 @@ export class VisitasUService {
   alta(usuarios) {
     return this._http.post('http://localhost/api-jardin/insert_visitas.php', JSON.stringify(usuarios));    
   }
+  altaadmin(usuarios) {
+    return this._http.post('http://localhost/api-jardin/insert_visitas_acepadoadmin.php', JSON.stringify(usuarios));    
+  }
   altainst(inst) {
     return this._http.post('http://localhost/api-jardin/insert_institucion.php', JSON.stringify(inst));    
   }
