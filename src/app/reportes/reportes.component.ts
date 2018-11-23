@@ -9,7 +9,7 @@ declare var $:any;
 })
 
 export class ReportesComponent implements  OnInit  {
-  dtOptions: DataTables.Settings = {};
+  dtOptions: any = {};
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -59,8 +59,25 @@ export class ReportesComponent implements  OnInit  {
      * assign it;
      */
   }
-  ngOnInit(): void {
+  ngOnInit(){
     this.dtOptions = {
+      "ordering": false,
+      dom: 'Bfrtip',
+      buttons: [
+                'copy',
+                {
+                    extend: 'excel',
+                    title: 'ACTA'
+                },
+                {
+                    extend: 'pdf',
+                    title: 'ACTA'
+                },
+                {
+                    extend: 'print',
+                    title: 'ACTA'
+                }
+            ],
       language: {
         "emptyTable": "Sin resultados encontrados",
         "info": " _START_ - _END_ / _TOTAL_ ",
@@ -78,8 +95,9 @@ export class ReportesComponent implements  OnInit  {
             "last": "Ultimo",
             "next": "Siguiente",
             "previous": "Anterior"
-        }
+        },
       }
+
     };
   }
 

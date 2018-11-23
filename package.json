@@ -36,6 +36,7 @@
     "jszip": "^3.1.5",
     "ng-fullcalendar": "^1.6.2",
     "ng2-charts": "^1.6.0",
+    "pdfmake": "^0.1.39",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
   },
