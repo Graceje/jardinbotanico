@@ -32,7 +32,7 @@ export class HeaderadminComponent implements OnInit {
         this.notis=this.notis.concat(result);
         console.log(result);
       });  
-    },30000);
+    },10000);
   }
 
   recargar(id){

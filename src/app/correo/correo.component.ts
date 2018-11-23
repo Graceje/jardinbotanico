@@ -14,7 +14,10 @@ export class CorreoComponent implements OnInit {
     titulo:string,
     institucion:string,
     contacto:string,
-    adultos:string,
+    ninos:string,
+    ninas:string,
+    mujeres:string,
+    hombres:string,
     telefono:string,
     correo:string,
     fecha:string,
@@ -60,7 +63,10 @@ export class CorreoComponent implements OnInit {
       titulo:'',
       institucion:'',
       contacto:'',
-      adultos:'',
+      ninos:'',
+      ninas:'',
+      mujeres:'',
+      hombres:'',
       telefono:'',
       correo:'',
       fecha:'',
@@ -75,7 +81,7 @@ export class CorreoComponent implements OnInit {
       .subscribe(notisk =>{
         console.log(notisk);
           this.notis = notisk[0];
-         for (let i = 1; i < notisk.length+1; i++) {
+        for (let i = 1; i < notisk.length+1; i++) {
             const element = notisk[i];
             if (element){
               console.log(element.nombre)
