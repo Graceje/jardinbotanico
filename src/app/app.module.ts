@@ -33,6 +33,12 @@ import {HttpClientModule} from '@angular/common/http';
 import { CorreoComponent } from './correo/correo.component';
 import { AuthService } from '../app/services/auth.service';
 import { Auth2Service } from '../app/services/auth2.service';
+import { GraficasComponent } from './graficas/graficas.component';
+import { ReportevisitasComponent } from './reportevisitas/reportevisitas.component';
+import { ReporteventosComponent } from './reporteventos/reporteventos.component';
+import { ReporteinstitucionComponent } from './reporteinstitucion/reporteinstitucion.component';
+import { Calendario3Component } from './calendario3/calendario3.component';
+
 const routes: Routes = [
   {path: '', component: InicioComponent},
   {path: 'registro', component: RegistroComponent},
@@ -43,12 +49,18 @@ const routes: Routes = [
   {path: 'informacion', component:InformacionComponent},
   {path: 'login', component:LoginComponent, canActivate: [Auth2Service]},
   {path: 'primera', component:PrimeraadminComponent, canActivate: [AuthService]},
-  {path: 'registroadmin', component:RegistroadminComponent},
+  {path: 'registroadmin', component:RegistroadminComponent,canActivate: [AuthService]},
   {path: 'reportes',  component: ReportesComponent,canActivate: [AuthService]},
   {path: 'tabla', component:TableComponent},
   {path: 'calendario', component:CalendarioComponent,canActivate: [AuthService]},
   {path: 'calendario2', component:Calendario2Component},
   {path: 'correo/:id', component:CorreoComponent,canActivate: [AuthService]},
+  {path: 'reporte_graficas', component:GraficasComponent,canActivate: [AuthService]},
+  {path: 'reporte_visitas', component:ReportevisitasComponent,canActivate: [AuthService]},
+  {path: 'reporte_eventos', component:ReporteventosComponent,canActivate: [AuthService]},
+  {path: 'reporte_instituciones', component:ReporteinstitucionComponent,canActivate: [AuthService]},
+  
+
   {path: '**', component: InicioComponent}
   
   
@@ -75,7 +87,13 @@ const routes: Routes = [
     TableeventosComponent,
     CalendarioComponent,
     Calendario2Component,
-    CorreoComponent
+    CorreoComponent,
+    GraficasComponent,
+    ReportevisitasComponent,
+    ReporteventosComponent,
+    ReporteinstitucionComponent,
+    Calendario3Component
+
   ],
   imports: [
     BrowserModule,

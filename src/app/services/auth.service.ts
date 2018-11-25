@@ -18,7 +18,9 @@ export class AuthService {
       return true;
 
     } catch (e) {
+      
       this.router.navigateByUrl('login');
+      
       return false;
     }
   }

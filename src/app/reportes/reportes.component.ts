@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 declare var jQuery:any;
 declare var $:any;
-
+import {ReportesService } from '../services/reportes.service';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 @Component({
   selector: 'app-reportes',
   templateUrl: './reportes.component.html',
@@ -9,6 +10,9 @@ declare var $:any;
 })
 
 export class ReportesComponent implements  OnInit  {
+  constructor ( private reporteservice:ReportesService){
+
+  }
   dtOptions: any = {};
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
@@ -20,8 +24,8 @@ export class ReportesComponent implements  OnInit  {
   public barChartLegend:boolean = true;
 
   // Pie
-  public pieChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
-  public pieChartData:number[] = [300, 500, 100];
+  public pieChartLabels:string[] = ['niños','niñas','Hombres','Mujeres'];;
+  public pieChartData:number[] = [];
   public pieChartType:string = 'pie';
 
 
@@ -60,6 +64,14 @@ export class ReportesComponent implements  OnInit  {
      */
   }
   ngOnInit(){
+    this.reporteservice.getpersonas().subscribe(resul=>{
+      console.log("aqui");
+      console.log(resul);
+      console.log(this.pieChartLabels);
+      this.pieChartData=[resul[0].ninos,resul[0].ninas,resul[0].hombres,resul[0].mujeres];
+      console.log(this.pieChartData);
+
+    });
     this.dtOptions = {
       "ordering": false,
       dom: 'Bfrtip',

@@ -82,7 +82,7 @@
                                 [labels]="barChartLabels"
                                 [options]="barChartOptions"
                                 [legend]="barChartLegend"
-                                [chartType]="barChartType"
+                                [(chartType)]="barChartType"
                                 (chartHover)="chartHovered($event)"
                                 (chartClick)="chartClicked($event)"></canvas>
                       </div>
@@ -91,8 +91,8 @@
                   <h4>Áreas mas visitadas</h4>    
                     <div >
                         <canvas baseChart
-                                [data]="pieChartData"
-                                [labels]="pieChartLabels"
+                                [(data)]="pieChartData"
+                                [(labels)]="pieChartLabels"
                                 [chartType]="pieChartType"
                                 (chartHover)="chartHovered($event)"
                                 (chartClick)="chartClicked($event)"></canvas>

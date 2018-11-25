@@ -1,17 +1,17 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import {ReportesService} from '../../app/services/reportes.service';
 @Component({
-  selector: 'app-calendario2',
-  templateUrl: './calendario2.component.html',
-  styleUrls: ['./calendario2.component.css']
+  selector: 'app-calendario3',
+  templateUrl: './calendario3.component.html',
+  styleUrls: ['./calendario3.component.css']
 })
-export class Calendario2Component implements OnInit {
+export class Calendario3Component implements OnInit {
   bailar=null;
   constructor(public reporteservice:ReportesService) { }
 
   ngOnInit() {
-    this.reporteservice.calendario().subscribe(result => {
+    this.reporteservice.calendario2().subscribe(result => {
       let evs = Array();
       for (let index = 0; index < result.length; index++) {
         const element = result[index];
@@ -47,7 +47,7 @@ export class Calendario2Component implements OnInit {
           alert('Event: ' + calEvent.title) ;
           alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
           alert('View: ' + view.name);
-
+          
           // change the border color just for fun
           $(this).css('border-color', 'red');
       
@@ -55,7 +55,6 @@ export class Calendario2Component implements OnInit {
       });
 
     });
-
   }
 
 }

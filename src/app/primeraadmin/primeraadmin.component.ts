@@ -39,6 +39,7 @@ export class PrimeraadminComponent implements OnInit {
         this.geteventos();
       }
     });
+    this.limpiar();
   }
   seleccione(ideventos) {
     this.eventosservice.seleccione(ideventos).subscribe(result => this.events = result[0]);
@@ -51,7 +52,7 @@ export class PrimeraadminComponent implements OnInit {
       fecha:' ',
       tiempo:' ',
       descripcion:' ',
-      imagen:' ',
+      imagen:null,
     }
   }
   

@@ -1,0 +1,95 @@
+<app-headeradmin></app-headeradmin>
+<br>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+<br>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12  text-center" >
+
+            <h2>Reporte de instituciones registradas</h2>
+          
+            <div class="row">
+                  <div class="col-sm-6" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);">
+                      <div class="card  mb-3">
+                          <div class="card-header bg-success  text-white"> <h4>Reporte de Instituciones</h4></div>
+                          <div class="card-body">
+                             
+              
+                              <div class="table-responsive">
+                                  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                                      <thead>
+                                        <tr>
+                                         
+                                            <td>Nombre</td>
+                                    
+                                            <td>Dirección</td>
+                                            <td>Localidad</td>
+                                            <td>Sector educativo</td>
+                            
+                                        
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr *ngFor="let et of bailar">
+                                            
+                                          <td>{{et.nombre}}</td>
+                                    
+                                          <td>{{et.direccion}}</td>
+                                          <td>{{et.localidad}}</td>
+                                          <td>{{et.sector_educativo}}</td>
+                                         
+                                        </tr> 
+                                      </tbody>
+                                    </table>
+                              </div>
+
+                        </div>
+                        </div>
+                   
+                  </div>
+                  <div class="col-sm-6" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);"> 
+                      <div class="card  mb-3">
+                          <div class="card-header bg-success  text-white"> <h4> Instituciones que mas visitan el jardín</h4></div>
+                          <div class="card-body">
+                              
+                              <div >
+                                  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                                      <thead>
+                                        <tr>
+                                         
+                                          <td>Institucion</td>
+                                          <td>Cantidad</td>
+                                        
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr *ngFor="let e of bailame">
+                                        
+                                          <td>{{e.institucion}}</td>
+                                          <td>{{e.cantidad}}</td>
+                                         
+                                        </tr> 
+                                      </tbody>
+                                    </table>
+                              
+                             
+                          </div> 
+                          </div>
+                      </div>
+                   
+               
+                </div>
+                <br>
+                <br>
+          
+              
+          </div>
+  
+  
+    </div>
+  
+  </div>

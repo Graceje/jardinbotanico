@@ -19,8 +19,9 @@ export class Auth2Service {
       return false;
 
     } catch (e) {
-     
+      
       return true;
+     
      
     }
   }

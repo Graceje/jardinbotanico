@@ -96,7 +96,7 @@ export class CorreoComponent implements OnInit {
               }
             }
             
-          }
+      }
   });
   }
 

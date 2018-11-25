@@ -21,11 +21,24 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   login(){
+    
     this.logingservice.login(this.log.correo,this.log.pass).subscribe( result =>{
+      console.log('amos');
       this.toki = result;
-      localStorage.setItem("correo",this.log.correo);
-      localStorage.setItem('token' , this.toki.token);
-      this.routs.navigateByUrl('primera');
+      
+      console.log(this.toki);
+      if(this.toki == null){
+        alert("Error, Intente de nuevo");
+
+      }else{
+        
+        localStorage.setItem("correo",this.log.correo);
+        localStorage.setItem('token' , this.toki.token);
+        
+        this.routs.navigateByUrl('primera');
+
+      };
+     
     });
   }
 
