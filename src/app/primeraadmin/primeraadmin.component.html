@@ -146,50 +146,81 @@
         <br>
         <div class="container-fluid">
             <div class="col-sm-12 col-md-12">
-                <div class="card border-success ">
-                    <h5 class="card-header  border-success">Registro de Evento</h5>
-                    <div class="card-body">
-                        <div >  
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputEmail4">Nombre de evento</label>
-                                  <input type="text" class="form-control" [(ngModel)]="events.titulo" name="titulo">
+              <form #formpro="ngForm">
+                  <div class="card border-success ">
+                      <h5 class="card-header  border-success">Registro de Evento</h5>
+                      <div class="card-body">
+                          <div >  
+                              <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="text">Nombre de evento</label>
+                                    <i class="fa fa-check-circle check" *ngIf="titulo.valid"></i>
+                                    <i class="fa fa-exclamation-circle uncheck" *ngIf="titulo.invalid && titulo.touched"></i>
+                                    <input type="text" class="form-control" [(ngModel)]="events.titulo" name="titulo" ngModel required text #titulo="ngModel">
+                                    <p class="alert alert-danger" *ngIf="titulo.invalid && titulo.touched">
+                                        Por favor introduzca nombre de evento
+                                    </p>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="date">Fecha:</label>
+                                    <i class="fa fa-check-circle check" *ngIf="fecha.valid"></i>
+                                    <i class="fa fa-exclamation-circle uncheck" *ngIf="fecha.invalid && fecha.touched"></i>
+                                    <input class="form-control" type="date" value="2011-08-19" id="fecha"  [(ngModel)]="events.fecha" name="fecha" ngModel required date #fecha="ngModel">
+                                    <p class="alert alert-danger" *ngIf="fecha.invalid && fecha.touched">
+                                        Por favor introduzca fecha de evento
+                                    </p>
+                                  </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                  <label for="inputPassword4">Fecha:</label>
-                                  <input class="form-control" type="date" value="2011-08-19" id="fecha"  [(ngModel)]="events.fecha" name="fecha">
-                                </div>
+                              
+                              <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="time">Hora:</label>
+                                      <i class="fa fa-check-circle check" *ngIf="tiempo.valid"></i>
+                                      <i class="fa fa-exclamation-circle uncheck" *ngIf="tiempo.invalid && tiempo.touched"></i>
+                                      <input class="form-control" type="time" value="13:45:00"  [(ngModel)]="events.tiempo" name="tiempo" ngModel required time #tiempo="ngModel">
+                                      <p class="alert alert-danger" *ngIf="tiempo.invalid && tiempo.touched">
+                                          Por favor introduzca hora de evento
+                                      </p>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="imagen">Imagen:</label>
+                                      <div class="custom-file">
+                                          <i class="fa fa-check-circle check" *ngIf="imagen.valid"></i>
+                                          <i class="fa fa-exclamation-circle uncheck" *ngIf="imagen.invalid && imagen.touched"></i>
+                                          <input type="file" class="form-control" id="imagen" name="imagen" [(ngModel)]="events.imagen" ngModel required file #imagen="ngModel" />
+                                          <p class="alert alert-danger" *ngIf="imagen.invalid && imagen.touched">
+                                              Por favor introduzca imagen de evento
+                                          </p>
+                                        </div>
+                                    </div>
+                                  </div>
+          
+                              <div class="row">
+                                  <label for="message-text" class="col-form-label">Descripcion:</label>
+                                  
+                                  <div class="col">
+                                      <i class="fa fa-check-circle check" *ngIf="descripcion.valid"></i>
+                                      <i class="fa fa-exclamation-circle uncheck" *ngIf="descripcion.invalid && descripcion.touched"></i>
+                                      <textarea class="form-control" id="message-text"  [(ngModel)]="events.descripcion" name="descripcion" ngModel required text #descripcion="ngModel"></textarea >
+                                        <p class="alert alert-danger" *ngIf="descripcion.invalid && descripcion.touched">
+                                            Por favor introduzca descripcion de evento
+                                        </p>
+                                      </div>
+          
+          
                               </div>
                             
-                            <div class="form-row">
-                                  <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Hora:</label>
-                                    <input class="form-control" type="time" value="13:45:00"  [(ngModel)]="events.tiempo" name="tiempo">
-                                  </div>
-                                  <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Imagen:</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="form-control" id="imagen" name="imagen" [(ngModel)]="events.imagen" />
-                                      </div>
-                                  </div>
-                                </div>
-        
-                            <div class="row">
-                                <label for="message-text" class="col-form-label">Descripcion:</label>
-                                
-                                <div class="col">
-                                    <textarea class="form-control" id="message-text"  [(ngModel)]="events.descripcion" name="descripcion"></textarea >
-                                </div>
-        
-        
-                            </div>
-                          
-                           
-                    
+                             
+                      
+                      </div>
+                      <button type="button" class="btn btn-primary" (click)="alta()" [disabled]= "!formpro.valid">Guardar</button>
+                      <p class="alert alert-danger" *ngIf="!formpro.valid">
+                          Por favor complete todos los campos
+                      </p>
+                      </div>
                     </div>
-                    <button type="button" class="btn btn-primary" (click)="alta()">Guardar</button>
-                    </div>
-                  </div>
+              </form>
+                
             </div>
           </div>
         <br/>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Visitas } from '../models/visitas';
 import { VisitasUService} from '../services/visitas-u.service';
-import {NgForm } from '@angular/forms/src/directives/ng_form';
+import { NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -9,7 +9,7 @@ import {NgForm } from '@angular/forms/src/directives/ng_form';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-  
+  @ViewChild('formpro') formpro: NgForm;
    visita=null;
    inst=null;
    in= {
@@ -54,7 +54,8 @@ export class RegistroComponent implements OnInit {
     this.visitasuService.alta(this.vis).subscribe(datos => {
       if (datos['resultado']=='OK') {
         alert(datos['mensaje']);
-       
+        //location.reload();
+        this.formpro.reset();
 
       }
     });

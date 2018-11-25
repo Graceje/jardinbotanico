@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {VisitasUService} from '../services/visitas-u.service';
+import { NgForm} from '@angular/forms';
 @Component({
   selector: 'app-registroadmin',
   templateUrl: './registroadmin.component.html',
   styleUrls: ['./registroadmin.component.css']
 })
 export class RegistroadminComponent implements OnInit {
+  @ViewChild('formpro') formpro: NgForm;
   visita=null;
   inst=null;
   in= {
@@ -47,6 +49,7 @@ export class RegistroadminComponent implements OnInit {
     this.visitaUservice.altaadmin(this.vis).subscribe(datos => {
       if (datos['resultado']=='OK') {
         alert(datos['mensaje']);
+        this.formpro.reset();
        
 
       }

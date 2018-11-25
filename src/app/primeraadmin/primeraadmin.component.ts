@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventosService } from '../services/eventos.service';
 import { HttpClient } from '@angular/common/http';
+import { NgForm} from '@angular/forms';
+
 @Component({
   selector: 'app-primeraadmin',
   templateUrl: './primeraadmin.component.html',
   styleUrls: ['./primeraadmin.component.css']
 })
 export class PrimeraadminComponent implements OnInit {
+  @ViewChild('formpro') formpro: NgForm;
   bailame=null;
   events={
     ideventos:null,
@@ -40,6 +43,7 @@ export class PrimeraadminComponent implements OnInit {
       }
     });
     this.limpiar();
+    this.formpro.reset();
   }
   seleccione(ideventos) {
     this.eventosservice.seleccione(ideventos).subscribe(result => this.events = result[0]);

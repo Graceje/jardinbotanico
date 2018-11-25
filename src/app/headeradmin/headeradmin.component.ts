@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {NotificacionesService} from '../services/notificaciones.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import { NgForm} from '@angular/forms';
 @Component({
   selector: 'app-headeradmin',
   templateUrl: './headeradmin.component.html',
   styleUrls: ['./headeradmin.component.css']
 })
 export class HeaderadminComponent implements OnInit {
+  @ViewChild('formpro') formpro: NgForm;
   notis;
   sesion; 
 
@@ -39,6 +41,7 @@ export class HeaderadminComponent implements OnInit {
     this.router.navigateByUrl("/correo/"+id);
  
     location.reload();
+    
   }
   cerrarsesion(){
     

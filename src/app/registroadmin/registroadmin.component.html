@@ -3,180 +3,239 @@
 
 
 <div class="container-fluid">
+    <form #formpro="ngForm" >  
+      <div class="row">
         
-    <div class="row ">
-        <div class="col-sm-6 ">
-               
-                <div class="card">
-                    <div class="card-header bg-info text-white">
+          <div class="col-sm-6 ">
+                
+                  <div class="card">
+                      <div class="card-header  bg-info text-white">
                         Datos Generales
                       </div>
-                    <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Titulo</label>
+                      <div class="card-body">
+                          <div class="form-group row">
+                              <label for="titulo2" class="col-sm-2 col-form-label">Titulo</label>
+                              <div class="col-sm-10">
+                                <i class="fa fa-check-circle check" *ngIf="titulo.valid"></i>
+                                <i class="fa fa-exclamation-circle uncheck" *ngIf="titulo.invalid && titulo.touched"></i>
+                                <input [(ngModel)]="vis.titulo" type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo de reservación"  ngModel required titulo2 #titulo="ngModel">
+                                <p class="alert alert-danger" *ngIf="titulo.invalid && titulo.touched">
+                                    Por favor introduzca titulo
+                                </p>
+                              </div>
+                      </div>
+                      <div class="form-group row">
+                              <label for="in" class="col-sm-2 col-form-label">Institución</label>
+                              <div class="col-sm-6">
+                                  <i class="fa fa-check-circle check" *ngIf="institucion.valid"></i>
+                                  <i class="fa fa-exclamation-circle uncheck" *ngIf="institucion.invalid && institucion.touched"></i>
+                                <select  class="form-control" id="institucion" name="institucion" [(ngModel)]="vis.institucion" ngModel required in #institucion="ngModel">
+                                  <option value="">Seleccione Institución</option>
+                                  <option *ngFor="let inst of inst"  >{{inst.nombre}}</option>
+                                </select>
+                                <p class="alert alert-danger" *ngIf="institucion.invalid && institucion.touched">
+                                    Por favor introduzca institución 
+                                </p>
+                              </div>
+                              <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#insss">Otra Institución</button>
+                      </div>
+                  
+                      <div class="form-inline row">
+                              <label class="col-sm-2 col-form-lab" for="personas">Cantidad de</label>
+                              <div class="col-10">
+                                  <i class="fa fa-check-circle check" *ngIf="ninos.valid"></i>
+                                  <i class="fa fa-exclamation-circle uncheck" *ngIf="ninos.invalid && ninos.touched"></i>
+                                          <input class="form-control" type="number" [(ngModel)]="vis.ninos"  name="ninos" placeholder="Niños*" ngModel required personas #ninos="ngModel">
+                                          <p class="alert alert-danger" *ngIf="ninos.invalid && ninos.touched">
+                                              Por favor introduzca cantidad de niños  
+                                          </p>
+                                          <i class="fa fa-check-circle check" *ngIf="ninas.valid"></i>
+                                          <i class="fa fa-exclamation-circle uncheck" *ngIf="ninas.invalid && ninas.touched"></i>
+                                          <input  class="form-control" type="number" [(ngModel)]="vis.ninas" name="ninas"  placeholder="Niñas*" ngModel required personas #ninas="ngModel" >
+                                          <p class="alert alert-danger" *ngIf="ninas.invalid && ninas.touched">
+                                              Por favor introduzca cantidad de niñas  
+                                          </p>
+                                          <i class="fa fa-check-circle check" *ngIf="mujeres.valid"></i>
+                                          <i class="fa fa-exclamation-circle uncheck" *ngIf="mujeres.invalid && mujeres.touched"></i>
+                                          <input  class="form-control" type="number" [(ngModel)]="vis.mujeres" name="mujeres" placeholder="Mujeres*" ngModel required personas #mujeres="ngModel">
+                                          <p class="alert alert-danger" *ngIf="mujeres.invalid && mujeres.touched">
+                                              Por favor introduzca cantidad de Mujeres  
+                                          </p>
+                                          <i class="fa fa-check-circle check" *ngIf="hombres.valid"></i>
+                                          <i class="fa fa-exclamation-circle uncheck" *ngIf="hombres.invalid && hombres.touched"></i>
+                                          <input  class="form-control" type="number" [(ngModel)]="vis.hombres" name="hombres" placeholder="Hombres*" ngModel required personas #hombres="ngModel">
+                                          <p class="alert alert-danger" *ngIf="hombres.invalid && hombres.touched">
+                                              Por favor introduzca cantidad de Hombres 
+                                          </p>
+                                          
+                                         
+                              </div>
+                              
+                                     
+
+                              
+                              
+                      </div>
+
+                      </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="card">
+                      <div class="card-header bg-success text-white">
+                          Datos de Contacto
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="contacto2" class="col-sm-2 col-form-label">Contacto</label>
+                                <div class="col-sm-10">
+                                    <i class="fa fa-check-circle check" *ngIf="contacto.valid"></i>
+                                    <i class="fa fa-exclamation-circle uncheck" *ngIf="contacto.invalid && contacto.touched"></i>
+                                  <input type="text" [(ngModel)]="vis.contacto" name="contacto" class="form-control" id="contacto" placeholder="Nombre de contacto" ngModel required contacto2 #contacto="ngModel">
+                                  <p class="alert alert-danger" *ngIf="contacto.invalid && contacto.touched">
+                                      Por favor introduzca nombre de contacto
+                                  </p>
+                                </div>
+                        </div>
+                            <br>
+                            <div class="form-group row">
+                                    <label for="tele" class="col-sm-2 col-form-label">Telefono</label>
                                     <div class="col-sm-10">
-                                      <input [(ngModel)]="vis.titulo" type="text" class="form-control" id="titulo" placeholder="Titulo de reservación">
+                                        <i class="fa fa-check-circle check" *ngIf="telefono.valid"></i>
+                                        <i class="fa fa-exclamation-circle uncheck" *ngIf="telefono.invalid && telefono.touched"></i>
+                                            <input  [(ngModel)]="vis.telefono" name="telefono" class="form-control" type="tel" value="1-(555)-555-5555" pattern="[0-9]{10}" id="telefono"  ngModel required tel #telefono="ngModel" >
+                                            <p class="alert alert-danger" *ngIf="telefono.invalid && telefono.touched">
+                                                Por favor introduzca telefono valido
+                                            </p>
+     
                                     </div>
                             </div>
                             <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Escuela</label>
-                                    <div class="col-sm-6">
-                                      <select id="inputState" class="form-control" id="institucion" name="institucion" [(ngModel)]="vis.institucion" >
-                                        <option value="">Seleccione Institución</option>
-                                        <option *ngFor="let inst of inst"  >{{inst.nombre}}</option>
-                                      </select>
+                                    <label for="correo" class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <i class="fa fa-check-circle check" *ngIf="correo.valid"></i>
+                                        <i class="fa fa-exclamation-circle uncheck" *ngIf="correo.invalid && correo.touched"></i>
+                                      <input [(ngModel)]="vis.correo"  type="email" class="form-control" id="correo"name="correo" placeholder="Email"  ngModel required email #correo="ngModel">
+                                      <p class="alert alert-danger" *ngIf="correo.invalid && correo.touched">
+                                          Por favor introduzca correo valido
+                                      </p>
                                     </div>
-                                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#insss">Otra Institución</button>
                             </div>
-                            <div class="form-inline row">
-                                <label class="col-sm-2 col-form-lab" for="inlineFormCustomSelect">Cantidad de</label>
-                                <div class="col-sm-10">
-                                  
-                                            <input class="form-control" type="number" [(ngModel)]="vis.ninos"  placeholder="Niños*" >
-                                            <input  class="form-control" type="number" [(ngModel)]="vis.ninas"  placeholder="Niñas*" >
-                                            <input  class="form-control" type="number" [(ngModel)]="vis.mujeres"  placeholder="Mujeres*" >
-                                            <input  class="form-control" type="number" [(ngModel)]="vis.hombres"  placeholder="Hombres*" >
-                                          
-                                            
-                                          
-                                </div>
-                                
-                                      
-
-                                
-                                
-                              </div>
-
-                    </div>
-                  
-                </div>
-                <br>
-                <br>
-                <div class="card">
-                    <div class="card-header bg-info text-white">
-                        Datos de Contacto
                       </div>
+                </div>
+                  
+                  
+                
+
+
+          </div>
+          <div class="col-sm-6">
+              <br>
+              <div class="card">
+                  <div class="card-header  bg-success text-white">
+                      Datos de recorrido de visita
+                    </div>
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Contacto</label>
-                            <div class="col-sm-10">
-                              <input type="text" [(ngModel)]="vis.contacto"  class="form-control" id="inputEmail3" placeholder="Nombre de contacto">
-               
-                            </div>
-                    </div>
-                  
-                    <br>
-                    <div class="form-group row">
-                            <label for="tel" class="col-sm-2 col-form-label">Telefono</label>
-                            <div class="col-sm-10">
-                                    <input  [(ngModel)]="vis.telefono"  class="form-control" type="tel" value="1-(555)-555-5555" id="tel">
-    
-                            </div>
-                    </div>
-                    <div class="form-group row">
-                            <label for="email" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
-                              <input [(ngModel)]="vis.correo"  type="email" class="form-control" id="email" placeholder="Email">
-                            </div>
-                    </div>
-                    </div>
-                </div>
-                
-                
-               
-
-
-        </div>
-        <div class="col-sm-6">
-            <br>
-
-            <div class="card">
-                <div class="card-header bg-info text-white">
-                    Datos del recorrido
-                  </div>
-                <div class="card-body">
-                    
-                    <div class="form-group row">
-                        <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                        <div class="col-10">
-                          <input [(ngModel)]="vis.fecha"  class="form-control" type="date" value="2011-08-19" id="example-date-input">
-                    </div>
-                      </div>
-                        <div class="form-group row">
-                        <label for="example-time-input" class="col-2 col-form-label">Time</label>
-                        <div class="col-10">
-                          <input [(ngModel)]="vis.tiempo"  class="form-control" type="time" value="13:45:00" id="example-time-input">
+                            <label for="fechaa" class="col-2 col-form-label">Date</label>
+                            <div class="col-10">
+                                <i class="fa fa-check-circle check" *ngIf="fecha.valid"></i>
+                                <i class="fa fa-exclamation-circle uncheck" *ngIf="fecha.invalid && fecha.touched"></i>
+                              <input [(ngModel)]="vis.fecha"  class="form-control" type="date" value="2011-08-19" id="fecha" name="fecha" ngModel required fechaa #fecha="ngModel">
+                              <p class="alert alert-danger" *ngIf="fecha.invalid && fecha.touched">
+                                  Por favor introduzca fecha
+                              </p>
                         </div>
-                      </div>
-                      <br>
-                      <fieldset class="form-group row">
-                        <legend class="col-form-legend col-sm-2">Recorrido</legend>
-                        <div class="col-sm-10">
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input [(ngModel)]="vis.plantario"  class="form-check-input" type="checkbox" name="plantario" id="plantario" value="option1" checked>
-                              Plantario
-                            </label>
+                          </div>
+                            <div class="form-group row">
+                            <label for="time" class="col-2 col-form-label">Time</label>
+                            <div class="col-10">
+                                <i class="fa fa-check-circle check" *ngIf="tiempo.valid"></i>
+                                <i class="fa fa-exclamation-circle uncheck" *ngIf="tiempo.invalid && tiempo.touched"></i>
+                              <input [(ngModel)]="vis.tiempo"  class="form-control" type="time" value="13:45:00" id="tiempo" name="tiempo" ngModel required time #tiempo="ngModel">
+                              <p class="alert alert-danger" *ngIf="tiempo.invalid && tiempo.touched">
+                                  Por favor introduzca hora
+                              </p>
+                            </div>
                           </div>
                           <br>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input [(ngModel)]="vis.mariposario"  class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios2" >
-                              Mariposario
-                            </label>
-                          </div>
-                          <br>
-                          <div class="form-check disabled">
-                            <label class="form-check-label">
-                              <input [(ngModel)]="vis.Recinto_educativo"  class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3"  >
-                              Recinto Educativo
-                            </label>
-                          </div>
-                          <br>
-                          <div class="form-check disabled">
+                          <fieldset class="form-group row">
+                            <legend class="col-form-legend col-sm-2">Recorrido</legend>
+                            <div class="col-sm-10">
+                              <div class="form-check">
                                 <label class="form-check-label">
-                                  <input [(ngModel)]="vis.Jardin_tematico" class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3"  >
-                                  Jardines tematicos
+                                  <input [(ngModel)]="vis.plantario"  class="form-check-input" type="checkbox" name="plantario" id="plantario" value="option1" checked>
+                                  Plantario
                                 </label>
                               </div>
-                        </div>
-                      </fieldset>
-
-                      <h6>Espera tu respuesta en tu correo electronico</h6>
-                      <div class="form-group row">
-                        <div class="offset-sm-4 col-sm-10">
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="alta()">Reservar visita</button>
-                        </div>
-                      </div>
-                </div>
-            </div>
-           
-                      <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Registro de visita</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <h4> Registro Satisfactorio.</h4>
-                                    <hr>
-                                    Gracias por tu reservación-Jardin Botanico Benjamin Francis Johnston.
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button"(click)="onguardar()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    
-                                    </div>
-                                </div>
-                                </div>
+                              <br>
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input [(ngModel)]="vis.mariposario"  class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios2" >
+                                  Mariposario
+                                </label>
+                              </div>
+                              <br>
+                              <div class="form-check disabled">
+                                <label class="form-check-label">
+                                  <input [(ngModel)]="vis.Recinto_educativo"  class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3"  >
+                                  Recinto Educativo
+                                </label>
+                              </div>
+                              <br>
+                              <div class="form-check disabled">
+                                    <label class="form-check-label">
+                                      <input [(ngModel)]="vis.Jardin_tematico" class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3"  >
+                                      Jardines tematicos
+                                    </label>
+                                  </div>
                             </div>
+                          </fieldset>
 
-        </div>
+                          <h6>Espera tu respuesta en tu correo electronico</h6>
+                          <div class="form-group row">
+                            <div class="offset-sm-4 col-sm-10">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="alta()" [disabled]= "!formpro.valid">Reservar visita</button>
+                             
+                            </div>
+                            <p class="alert alert-danger" *ngIf="!formpro.valid">
+                                Por favor complete todos los campos
+                            </p>
+                          </div>
+                          <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Registro de visita</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <h4> Espera tu respesta en tu correo electronico que proporcionaste.</h4>
+                                        <hr>
+                                        Gracias por tu reservación-Jardin Botanico Benjamin Francis Johnston.
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button"(click)="onguardar()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
 
-    </div>
+                    </div>
+              </div>
+             
+                       
+
+          </div>
+
+        
+
+      </div>
+  </form>  
               <!-- Modal -->
               <div class="modal fade" id="insss" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">

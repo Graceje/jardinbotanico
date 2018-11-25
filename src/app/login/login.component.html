@@ -12,10 +12,25 @@
                     <h2 class="text-center"><strong>Login</strong></h2>
                 </div>
                 <div  class="row justify-content-center" style="margin-top:30px;">            
-                    <div class="col-8 col-sm-6"><input [(ngModel)]="log.correo" class="form-control" type="email" name="email" placeholder="Email"></div>
+                    <div class="col-8 col-sm-6">
+                            <i class="fa fa-check-circle check" *ngIf="correo.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="correo.invalid && correo.touched"></i>
+                        <input [(ngModel)]="log.correo" class="form-control" type="email" name="correo" placeholder="Email" ngModel required email #correo="ngModel">
+                        <p class="alert alert-danger" *ngIf="correo.invalid && correo.touched">
+                                Por favor introduzca correo valido
+                            </p>
+                    </div>
+
                 </div>
                 <div class="row justify-content-center"style="margin-top:20px;">
-                    <div class="col-8 col-sm-6"><input [(ngModel)]="log.pass" class="form-control" type="password" name="password" placeholder="Password"></div>
+                    <div class="col-8 col-sm-6">
+                            <i class="fa fa-check-circle check" *ngIf="pass.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="pass.invalid && pass.touched"></i>
+                        <input [(ngModel)]="log.pass" class="form-control" type="password" name="pass" placeholder="Password"  ngModel required password #pass="ngModel">
+                        <p class="alert alert-danger" *ngIf="pass.invalid && pass.touched">
+                                Por favor introduzca correo valido
+                            </p>
+                    </div>
                 </div>
                 <div class="row justify-content-center" style="margin-top:25px;">
                     <div class="col-8 col-sm-6"><button   (click)= "login()" class="btn btn-primary btn-block" type="button" style="background-color:rgb(69,145,50);">Iniciar Sesión</button></div>
