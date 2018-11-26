@@ -187,7 +187,10 @@
                                       <div class="custom-file">
                                           <i class="fa fa-check-circle check" *ngIf="imagen.valid"></i>
                                           <i class="fa fa-exclamation-circle uncheck" *ngIf="imagen.invalid && imagen.touched"></i>
-                                          <input type="file" class="form-control" id="imagen" name="imagen" [(ngModel)]="events.imagen" ngModel required file #imagen="ngModel" />
+                                          <form #xd>
+                                            <input type="file" class="form-control" id="imagen" name="file" (change)="cargandoImagen($event)" ngModel required file #imagen="ngModel" />
+                                          </form>
+                                          
                                           <p class="alert alert-danger" *ngIf="imagen.invalid && imagen.touched">
                                               Por favor introduzca imagen de evento
                                           </p>

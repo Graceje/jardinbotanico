@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
     this.logingservice.login(this.log.correo,this.log.pass).subscribe( result =>{
       console.log('amos');
       this.toki = result;
-      
+      console.log(result);
       console.log(this.toki);
-      if(this.toki == null){
+      if(this.toki.token == "no"){
         alert("Error, Intente de nuevo");
 
       }else{

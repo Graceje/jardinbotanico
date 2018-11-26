@@ -238,7 +238,7 @@
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
-                            <form #formpro="ngForm">
+                            <form #formpro2="ngForm">
                                     <div class="modal-body">
                                     
                                     
@@ -287,8 +287,8 @@
                                     </div>
                                     <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary" (click)="altainst()" [disabled]= "!formpro.valid" >Guardar</button>
-                                    <p class="alert alert-danger" *ngIf="!formpro.valid">
+                                    <button type="button" class="btn btn-primary" (click)="altainst()" [disabled]= "!formpro2.valid" >Guardar</button>
+                                    <p class="alert alert-danger" *ngIf="!formpro2.valid">
                                             Por favor complete todos los campos
                                         </p>
                                     </div>

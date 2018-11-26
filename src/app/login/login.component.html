@@ -17,7 +17,7 @@
                             <i class="fa fa-exclamation-circle uncheck" *ngIf="correo.invalid && correo.touched"></i>
                         <input [(ngModel)]="log.correo" class="form-control" type="email" name="correo" placeholder="Email" ngModel required email #correo="ngModel">
                         <p class="alert alert-danger" *ngIf="correo.invalid && correo.touched">
-                                Por favor introduzca correo valido
+                                Por favor introduzca email valido
                             </p>
                     </div>
 

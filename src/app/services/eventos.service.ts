@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, ReplaySubject, from, of, range } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
+import { ContentType } from '@angular/http/src/enums';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,5 +23,8 @@ export class EventosService {
   }
   delete(ideventos:number) {
     return this._http.post('http://localhost/api-jardin/delete_eventos.php',{'ideventos':ideventos});
+  }
+  subirImagenAdmin(datos:any){
+    return this._http.post('http://localhost/api-jardin/insert_imagen.php', datos,{headers:{"Content-Type":"application/x-www-form-urlencoded"}});
   }
 }

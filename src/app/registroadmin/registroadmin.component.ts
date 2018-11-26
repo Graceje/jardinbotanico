@@ -8,6 +8,7 @@ import { NgForm} from '@angular/forms';
 })
 export class RegistroadminComponent implements OnInit {
   @ViewChild('formpro') formpro: NgForm;
+  @ViewChild('formpro2') formpro2: NgForm;
   visita=null;
   inst=null;
   in= {
@@ -28,7 +29,7 @@ export class RegistroadminComponent implements OnInit {
     correo:null,
     fecha:null,
     tiempo:null,
-  
+    tiempo1:null,
     plantario:null,
     mariposario:null,
     Jardin_tematico : null,
@@ -45,34 +46,45 @@ export class RegistroadminComponent implements OnInit {
   }
   
   alta() {
+    let hora: string = (this.vis.tiempo.substring(0,2));
+    let y: number; 
+    y =+hora;
+    y= y +1;
+    if (y<10){
+      hora = "0"+y;
+    }else{
+      hora = ""+y;
+    }
+  this.vis.tiempo1 = hora+this.vis.tiempo.substring(2);
+  if(this.vis.mariposario != true){
+    this.vis.mariposario=false;
+  }
+  if(this.vis.plantario != true){
+    this.vis.plantario=false;
+  }
+  if(this.vis.Recinto_educativo != true){
+    this.vis.Recinto_educativo=false;
+  }
+  if(this.vis.Jardin_tematico != true){
+    this.vis.Jardin_tematico=false;
+  }
 
     this.visitaUservice.altaadmin(this.vis).subscribe(datos => {
-      if (datos['resultado']=='OK') {
+      if (datos.resultado ==='NOK') {
+        alert("Hora y dia ocupado, intente de nuevo");
+      }else {
+        alert("Se registro visita");
+      }
+      /*if (datos['resultado']=='OK') {
         alert(datos['mensaje']);
         this.formpro.reset();
        
 
-      }
+      }*/
     });
-    this.vis={
-      titulo:' ',
-      institucion:' ',
-      contacto:' ',
-      ninos:' ',
-      ninas: ' ',
-      telefono:' ',
-      correo:' ',
-      fecha:' ',
-      tiempo:' ',
-      plantario:false,
-      mariposario:false,
-      Jardin_tematico : false,
-      Recinto_educativo: false,
-      mujeres: ' ',
-      hombres: ' ',
   
-  
-    }
+    this.formpro.reset();
+    this.formpro2.reset();
   }
   altainst() {
 

@@ -10,6 +10,7 @@ import { NgForm} from '@angular/forms';
 })
 export class RegistroComponent implements OnInit {
   @ViewChild('formpro') formpro: NgForm;
+  @ViewChild('formpro2') formpro2: NgForm;
    visita=null;
    inst=null;
    in= {
@@ -56,6 +57,7 @@ export class RegistroComponent implements OnInit {
         alert(datos['mensaje']);
         //location.reload();
         this.formpro.reset();
+        this.formpro2.reset();
 
       }
     });

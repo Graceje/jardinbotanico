@@ -22,6 +22,7 @@ export class CorreoComponent implements OnInit {
     correo:string,
     fecha:string,
     tiempo:string,
+    tiempo1: string,
     plantario: boolean,
     mariposario:boolean,
     Recinto_educativo:boolean,
@@ -42,10 +43,36 @@ export class CorreoComponent implements OnInit {
   }
   
   modificacion() {
+    let hora: string = (this.notis.tiempo.substring(0,2));
+        let y: number; 
+        y =+hora;
+        y= y +1;
+        if (y<10){
+          hora = "0"+y;
+        }else{
+          hora = ""+y;
+        }
+      this.notis.tiempo1 = hora+this.notis.tiempo.substring(2);
+      console.log(this.notis);
+      if(this.notis.mariposario != true){
+        this.notis.mariposario=false;
+      }
+      if(this.notis.plantario != true){
+        this.notis.plantario=false;
+      }
+      if(this.notis.Recinto_educativo != true){
+        this.notis.Recinto_educativo=false;
+      }
+      if(this.notis.Jardin_tematico != true){
+        this.notis.Jardin_tematico=false;
+      }
     this.notificacionesservice.modificacion(this.notis).subscribe(datos => {
-      if (datos['resultado']=='OK') {
-        alert(datos['mensaje']);
-        
+      console.log("nosepuede");
+      console.log(datos);
+      if (datos.resultado ==='NOK') {
+        alert("Hora y dia ocupado, intente de nuevo");
+      }else {
+        alert("Se registro visita");
       }
     });    
   }
@@ -71,6 +98,7 @@ export class CorreoComponent implements OnInit {
       correo:'',
       fecha:'',
       tiempo:'',
+      tiempo1:' ',
       plantario: false,
       mariposario: false,
       Recinto_educativo: false,
