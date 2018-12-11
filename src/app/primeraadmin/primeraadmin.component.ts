@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { EventosService } from '../services/eventos.service';
 import { HttpClient } from '@angular/common/http';
 import { NgForm} from '@angular/forms';
+
 
 @Component({
   selector: 'app-primeraadmin',
@@ -12,6 +13,7 @@ export class PrimeraadminComponent implements OnInit {
   @ViewChild('formpro') formpro: NgForm;
   @ViewChild('xd') xd: HTMLFormElement;
   bailame=null;
+  dataTable: any;
   loader:Boolean = false;
   events={
     ideventos:null,
@@ -19,13 +21,15 @@ export class PrimeraadminComponent implements OnInit {
     fecha:null,
     tiempo:null,
     tiempo1:null,
+    area:null,
+    categoria:null,
     descripcion:null,
     imagen:null,
 
   }
  
-  constructor( private eventosservice: EventosService) {
-  
+  constructor( private eventosservice: EventosService, private ref: ChangeDetectorRef) {
+   this.geteventos();
    }
 
   ngOnInit() {
@@ -34,7 +38,13 @@ export class PrimeraadminComponent implements OnInit {
   }
 
   geteventos(){
-    this.eventosservice.geteventos().subscribe(result => this.bailame = result);
+    this.eventosservice.geteventos().subscribe((result:any)=> {
+      this.bailame = result;
+      this.ref.detectChanges();
+      const table: any = $('table');
+      this.dataTable = table.dataTable();
+    }
+      );
   }
   alta() {
     let hora: string = (this.events.tiempo.substring(0,2));
@@ -48,18 +58,45 @@ export class PrimeraadminComponent implements OnInit {
         }
       this.events.tiempo1 = hora+this.events.tiempo.substring(2);
      
-    console.log(this.events),
-    this.eventosservice.alta(this.events).subscribe(datos => {
-      console.log("ya");
-      if (datos.resultado ==='NOK') {
-        alert("Hora y dia ocupado, intente de nuevo");
-      }else {
-        alert("Se registro evento");
-      }
-    });
-    this.geteventos();
+    console.log(this.events);
+    let img:any = this.ya;
+    if(img.files.length > 0){
+      let xxd = new FormData();
+      xxd.set('file', img.files[0]);
+      let proof: any = this.events;
+      this.eventosservice.subirImagenAdmin(xxd).subscribe( datos => {
+        if (datos['resultado']=='OK') {
+          console.log("JALO");
+          console.log(datos);
+          proof.imagen= datos['nombre'];
+          console.log(proof);
+          this.eventosservice.alta(proof).subscribe(datos => {
+            
+            console.log("ya");
+            if (datos['resultado'] =='NOK') {
+              alert("Hora y dia ocupado, intente de nuevo");
+            }else {
+              alert("Se registro evento");
+            }
+          });
+          this.geteventos();
     this.formpro.reset();
+        } else {
+          console.log("NO JALO");
+        }
+      });
+    }else{
+      alert("no a ingresado imagen");
+    }
+ 
+    
+  
+
   }
+
+
+
+
   seleccione(ideventos) {
     this.eventosservice.seleccione(ideventos).subscribe(result => this.events = result[0]);
     
@@ -71,6 +108,8 @@ export class PrimeraadminComponent implements OnInit {
       fecha:' ',
       tiempo:' ',
       tiempo1:' ',
+      categoria: ' ',
+      area: ' ',
       descripcion:' ',
       imagen:null,
     }
@@ -94,18 +133,13 @@ export class PrimeraadminComponent implements OnInit {
       }
     });
   }
-  public cargandoImagen(e){
-    let img:any = e.target;
-    if(img.files.length > 0){
 
-      let form = new FormData(this.xd);
-      console.log(form);
-      this.eventosservice.subirImagenAdmin(form).subscribe( datos => {
-        if (datos['resultado']=='OK') {
-          console.log("subio_imagen");
-         
-        }
-      });
-    }
+  ya:any;
+  public cargandoImagen(e){
+    this.ya = e.target;
+
+   
+
+    
   }
 }

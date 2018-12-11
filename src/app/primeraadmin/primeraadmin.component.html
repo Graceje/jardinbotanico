@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-header bg-success " style="color:aliceblue">EVENTOS</div>
                         <div class="card-body table-responsive">
-                            <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                            <table dataTable class="row-border hover">
                                 <thead>
                                   <tr>
                                    
@@ -187,12 +187,45 @@
                                       <div class="custom-file">
                                           <i class="fa fa-check-circle check" *ngIf="imagen.valid"></i>
                                           <i class="fa fa-exclamation-circle uncheck" *ngIf="imagen.invalid && imagen.touched"></i>
-                                          <form #xd>
-                                            <input type="file" class="form-control" id="imagen" name="file" (change)="cargandoImagen($event)" ngModel required file #imagen="ngModel" />
-                                          </form>
+                                            <input type="file" class="form-control" id="imagen" name="file"  (change)="cargandoImagen($event)" ngModel required file #imagen="ngModel" />
                                           
                                           <p class="alert alert-danger" *ngIf="imagen.invalid && imagen.touched">
                                               Por favor introduzca imagen de evento
+                                          </p>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="area">Área:</label>
+                                      <i class="fa fa-check-circle check" *ngIf="area.valid"></i>
+                                      <i class="fa fa-exclamation-circle uncheck" *ngIf="area.invalid && area.touched"></i>
+                                      <select id="inputState" class="form-control" id="area" name="area" [(ngModel)]="events.area" ngModel required text #area="ngModel" >
+                                                
+                                        <option value="Plantario" >Plantario</option>
+                                        <option value="Mariposario" >Mariposario</option>
+                                        <option value="Recinto_educativo" >Recinto educativo</option>
+                                        <option value="Jardines_tematicos" >Jardines tematicos</option>
+                                        </select>
+                                      <p class="alert alert-danger" *ngIf="area.invalid && area.touched">
+                                          Por favor introduzca área del evento
+                                      </p>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="categoria">Categoria:</label>
+                                      <div class="custom-file">
+                                          <i class="fa fa-check-circle check" *ngIf="categoria.valid"></i>
+                                          <i class="fa fa-exclamation-circle uncheck" *ngIf="categoria.invalid && categoria.touched"></i>
+                                          <select id="inputState" class="form-control" id="categoria" name="categoria" [(ngModel)]="events.categoria" ngModel required text #categoria="ngModel" >
+                                                
+                                            <option value="Deportivo" >Deportivo</option>
+                                            <option value="Artistico" >Artistico</option>
+                                            <option value="Recreativo" >Recreativo</option>
+                                            <option value="Formal" >Formal</option>
+                                            </select>
+                                          <p class="alert alert-danger" *ngIf="categoria.invalid && categoria.touched">
+                                              Por favor introduzca Categoria de evento
                                           </p>
                                         </div>
                                     </div>

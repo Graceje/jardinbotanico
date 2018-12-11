@@ -38,12 +38,16 @@ import { ReportevisitasComponent } from './reportevisitas/reportevisitas.compone
 import { ReporteventosComponent } from './reporteventos/reporteventos.component';
 import { ReporteinstitucionComponent } from './reporteinstitucion/reporteinstitucion.component';
 import { Calendario3Component } from './calendario3/calendario3.component';
+import { EvComponent } from './ev/ev.component';
+import { ReportevidenciaComponent } from './reportevidencia/reportevidencia.component';
+
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'eventos', component: EventosComponent},
   {path: 'mapa', component: MapaComponent},
+  {path: 'eve', component: EvComponent},
   {path: 'vision-mision', component:VisionMisionComponent},
   {path: 'historia', component:HistoriaComponent},
   {path: 'informacion', component:InformacionComponent},
@@ -54,13 +58,13 @@ const routes: Routes = [
   {path: 'tabla', component:TableComponent},
   {path: 'calendario', component:CalendarioComponent,canActivate: [AuthService]},
   {path: 'calendario2', component:Calendario2Component},
-  {path: 'correo/:id', component:CorreoComponent,canActivate: [AuthService]},
+  {path: 'correo', component:CorreoComponent,canActivate: [AuthService]},
   {path: 'reporte_graficas', component:GraficasComponent,canActivate: [AuthService]},
   {path: 'reporte_visitas', component:ReportevisitasComponent,canActivate: [AuthService]},
   {path: 'reporte_eventos', component:ReporteventosComponent,canActivate: [AuthService]},
   {path: 'reporte_instituciones', component:ReporteinstitucionComponent,canActivate: [AuthService]},
+  {path: 'reporte_evidencia', component:ReportevidenciaComponent,canActivate: [AuthService]},
   
-
   {path: '**', component: InicioComponent}
   
   
@@ -92,7 +96,10 @@ const routes: Routes = [
     ReportevisitasComponent,
     ReporteventosComponent,
     ReporteinstitucionComponent,
-    Calendario3Component
+    Calendario3Component,
+    EvComponent,
+    ReportevidenciaComponent,
+  
 
   ],
   imports: [
@@ -105,7 +112,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers: [VisitasUService],
+  providers: [VisitasUService, NotificacionesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

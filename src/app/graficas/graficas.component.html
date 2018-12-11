@@ -1,21 +1,20 @@
 <app-headeradmin></app-headeradmin>
 <br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-<br>
-<br>
+
 <div class="container">
   <div class="row">
       <div class="col-sm-12  text-center" >
-          <h2>Reporte en Graficas</h2>
+          <h3>Reporte en Graficas</h3>
         
           <div class="row">
                 <div class="col-sm-6" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);">
                     <div class="card  mb-3">
-                        <div class="card-header bg-success  text-white"><h4> Instituciones que mas visitan el jardin</h4></div>
+                        <div class="card-header bg-success  text-white"><h5> Meses mas visitados</h5></div>
                         <div class="card-body">
                             
                             <div >
-                                <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                                <table datatable  class="row-border hover">
                                     <thead>
                                       <tr>
                                        
@@ -42,7 +41,7 @@
                 </div>
                 <div class="col-sm-6" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);"> 
                     <div class="card  mb-3">
-                        <div class="card-header bg-success  text-white"><h4>Visitas mas frecuente</h4>  </div>
+                        <div class="card-header bg-success  text-white"><h5>Visitas mas frecuente</h5>  </div>
                         <div class="card-body">
                               
                             <div >
@@ -63,10 +62,10 @@
           <div class="row" > 
             <div class="col-sm-12" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);" >
                 <div class="card  mb-3">
-                    <div class="card-header bg-warning  text-white"><h4> Áreas mas visitadas</h4> </div>
+                    <div class="card-header bg-warning  text-white"><h5> Áreas mas visitadas</h5> </div>
                     <div class="card-body">
                         
-                        <div>
+                        <div  style="width: 600px; margin-left:auto;  margin-right:auto;">
                             <canvas baseChart
                                     [(datasets)]="barChartData"
                                     [(labels)]="barChartLabels"

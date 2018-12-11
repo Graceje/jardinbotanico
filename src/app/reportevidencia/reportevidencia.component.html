@@ -1,0 +1,91 @@
+<app-headeradmin></app-headeradmin>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <br>
+            <br>
+                <div class="card  mb-3">
+                        <div class="card-header bg-success  text-white"><h6>Áreas donde mas realizan eventos</h6>  </div>
+                        <div class="card-body">
+                              
+                            <div >
+                                    <canvas baseChart
+                                    [(datasets)]="barChartData"
+                                    [(labels)]="barChartLabels"
+                                    [options]="barChartOptions"
+                                    [legend]="barChartLegend"
+                                    [chartType]="barChartType"
+                                    (chartHover)="chartHovered($event)"
+                                    (chartClick)="chartClicked($event)"></canvas>
+                              </div>
+                        </div>
+                      </div>
+                      <div class="card  mb-3">
+                            <div class="card-header bg-success  text-white"><h6>Categoria de eventos que mas se realizan</h6>  </div>
+                            <div class="card-body">
+                                  
+                                <div >
+                                        <canvas baseChart
+                                        [(datasets)]="barChartData2"
+                                        [(labels)]="barChartLabels2"
+                                        [options]="barChartOptions"
+                                        [legend]="barChartLegend2"
+                                        [chartType]="barChartType2"
+                                        (chartHover)="chartHovered($event)"
+                                        (chartClick)="chartClicked($event)"></canvas>
+                                  </div>
+                            </div>
+                          </div>
+                      
+        </div>
+        <div class="col-sm-9 ">
+            <br>
+            <div class="row justify-content-center">
+                    <form class="form-inline">                     
+                            <div class="form-group mx-sm-3 mb-2">
+                              <label for="inputPassword2" class="sr-only">Password</label>
+                              <input type="text" class="form-control" id="inputPassword2" placeholder="Folio de evento" name="mss" [(ngModel)]="ms" (input)="limpiar()">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2" (click)="evento()">Buscar</button>
+                    </form>
+            </div>
+            <div class="table-responsive scroll ">
+                    <table id="table"  class="table table-striped ">
+                        <thead>
+                          <tr>
+                           
+                            <th>Folio</th>
+                            <th>Titulo</th>
+                     
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Área</th>
+                            <th>Categoria</th>
+                            
+                          
+                          </tr>
+                        </thead>
+                        <tbody>
+                                <tr *ngFor="let et of bailar2">
+                            
+                                        <td>{{et.ideventos}}</td>
+                                        <td>{{et.titulo}}</td>
+                                        <td>{{et.fecha}}</td>
+                                        <td>{{et.teimpo}}</td>
+                                        <td>{{et.area}}</td>
+                                        <td>{{et.categoria}}</td>
+                                        
+                                      
+                                       
+                                      </tr> 
+                        </tbody>
+                      </table>
+                </div>
+
+               
+        </div>
+
+
+    </div>
+
+</div>

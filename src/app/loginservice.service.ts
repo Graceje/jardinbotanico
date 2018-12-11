@@ -12,7 +12,7 @@ export class LoginserviceService {
  
   }
   login( correo:string, pass:string,){
-    return this._http.post('http://localhost/api-jardin/login.php',{'correo':correo, 'pass':pass});   
+    return this._http.post('http://machiwi.tech/api-jardin/login.php',{'correo':correo, 'pass':pass});   
   }
   
 

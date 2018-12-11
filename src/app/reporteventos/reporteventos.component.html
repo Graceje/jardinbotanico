@@ -2,43 +2,16 @@
 <br>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-<br>
-<br>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6" >
           <div class="card  mb-3">
-                <div class="card-header bg-warning  text-white"><h4>Reporte de visitas del dia</h4></div>
+                <div class="card-header bg-warning  text-white"><h5>Reporte de eventos del dia</h5></div>
                 <div class="card-body">
                     
-                    <div class="table-responsive">
-                        <table datatable [dtOptions]="dtOptions" class="row-border hover">
-                        <thead>
-                          <tr>
-                           
-                            <td>Titulo</td>
-                          
-                            <td>Fecha</td>
-                            <td>Tiempo</td>
-                            <td>Descripción</td>
-                            
-              
-                          
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let e of bailar">
-                              
-                            <td>{{e.titulo}}</td>
-                          
-                            <td>{{e.fecha}}</td>
-                            <td>{{e.tiempo}}</td>
-                            <td>{{e.descripcion}}</td>
-                           
-                           
-                          </tr> 
-                        </tbody>
-                      </table>
+                    <div class="table-responsive scroll2">
+                        <table #dataTable class="display" style="width:100%"></table>
                     </div>
 
               </div>
@@ -48,11 +21,13 @@
         </div>
         <div class="col-sm-6" >
             <div class="card  mb-3">
-                <div class="card-header bg-warning text-white"><h4>Reporte de eventos del Mes</h4></div>
+                <div class="card-header bg-warning text-white"><h5>Reporte de eventos del Mes</h5></div>
                 <div class="card-body">
-                    
+                    <div>  
+                        <input type="button" value="Imprimir PDF" (click)="generatePDF()"/>  
+                      </div>
                 <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Seleccione reporte de </label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">reporte de </label>
                     <div class="col-sm-3">
                         <select [(ngModel)]="ms" class="custom-select mr-sm-2" id="inlineFormCustomSelect" (change)="mes()">
                             <option selected>Selecciona...</option>
@@ -73,8 +48,8 @@
                     </div>
                     
             </div>
-              <div class="table-responsive">
-                  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+              <div class="table-responsive scroll">
+                  <table id="table" class=" table table-striped ">
                       <thead>
                         <tr>
                          
@@ -112,9 +87,11 @@
   <div class="row">
         <div class="col-sm-12" style="box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);">
             <div class="card  mb-3">
-                <div class="card-header bg-success  text-white"><h4>Reporte de Eventos por Año</h4></div>
+                <div class="card-header bg-success  text-white"><h5>Reporte de Eventos por Año</h5></div>
                 <div class="card-body">
-                    
+                    <div>  
+                        <input type="button" value="Imprimir PDF" (click)="generatePDF2()"/>  
+                      </div>
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Seleccione reporte de </label>
                         <div class="col-sm-3">
@@ -138,8 +115,8 @@
                         
                 </div>
           
-                  <div class="table-responsive">
-                      <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                  <div class="table-responsive scroll">
+                      <table id="table2" class="table row-border hover">
                           <thead>
                             <tr>
                              

@@ -70,7 +70,7 @@ export class RegistroadminComponent implements OnInit {
   }
 
     this.visitaUservice.altaadmin(this.vis).subscribe(datos => {
-      if (datos.resultado ==='NOK') {
+      if (datos['resultado'] ==='NOK') {
         alert("Hora y dia ocupado, intente de nuevo");
       }else {
         alert("Se registro visita");

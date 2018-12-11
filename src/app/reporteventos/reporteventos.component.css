@@ -1,0 +1,15 @@
+.scroll {
+
+    height:250px;
+    overflow-y: scroll;
+  }
+  .scroll2 {
+  
+    height:332px;
+    overflow-y: scroll;
+  }
+  .scroll3 {
+  
+    height:832px;
+    overflow-y: scroll;
+  }

@@ -17,7 +17,7 @@ export class GraficasComponent implements OnInit {
   //barra-AREAS
   public barChartLabels:string[] = ['jardin tematico','mariposario','plantario','recinto educativo'];
   public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
+  public barChartLegend:boolean = false;
 
   public barChartData:any[] = [
     {data: []}

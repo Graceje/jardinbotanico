@@ -1,0 +1,20 @@
+<app-header></app-header>
+<br>
+<div class="container">
+
+    <h2 class="text-center">Eventos del Día</h2>
+    <div *ngFor="let e of bailame" class="list-unstyled"  >
+      <br>
+        <div  class="media border p-3">
+          <img class="mt-3 rounded-circle" src="http://machiwi.tech/api-jardin/img/{{e.imagen}}" alt="Generic placeholder image" class="img-fluid" style="width:200px" >
+          <div class="media-body">
+            <h5 class="mt-0 ">Titulo: {{e.titulo}} </h5>
+            <h6 >Fecha: {{e.fecha}}  </h6>
+            <h6>Hora:{{e.tiempo}}</h6>
+            <h6>Descripción de evento: {{e.descripcion}}</h6>
+
+            
+          </div>
+        </div>
+    </div>
+</div>

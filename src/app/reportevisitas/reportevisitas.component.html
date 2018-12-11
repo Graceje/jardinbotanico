@@ -2,54 +2,18 @@
 <br>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-<br>
-<br>
-<div class="container-fluid">
+
+
+<div class="container-fluid ">
   <div class="row">
    
-    <div class="col-sm-6" >
+    <div class="col-sm-6 " data-spy="scroll"  data-offset="0" >
         <div class="card  mb-3">
             <div class="card-header bg-success  text-white"><h4>Reporte de visitas del dia</h4></div>
             <div class="card-body">
                 
-                <div class="table-responsive">
-                    <table datatable [dtOptions]="dtOptions" class="row-border hover">
-                    <thead class="text-white">
-                      <tr>
-                       
-                        <td>Titulo</td>
-                        <td>Institución</td>
-                        <td>Contacto</td>
-                        <td>Niños</td>
-                        <td>Niñas</td>
-                        <td>Telefono</td>
-                        <td>Correo</td>
-                        <td>Fecha</td>
-                        <td>Tiempo</td>
-                        <td>Mujeres</td>
-                        <td>Hombres</td>
-          
-                      
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let e of bailar">
-                          
-                        <td>{{e.titulo}}</td>
-                        <td>{{e.institucion}}</td>
-                        <td>{{e.contacto}}</td>
-                        <td>{{e.ninos}}</td>
-                        <td>{{e.ninas}}</td>
-                        <td>{{e.telefono}}</td>
-                        <td>{{e.correo}}</td>
-                        <td>{{e.fecha}}</td>
-                        <td>{{e.tiempo}}</td>
-                        <td>{{e.mujeres}}</td>
-                        <td>{{e.hombres}}</td>
-                       
-                      </tr> 
-                    </tbody>
-                  </table>
+                <div class="table-responsive scroll2">
+                    <table #dataTable class="display" style="width:100%"></table>
                 </div>
               
             </div>
@@ -58,11 +22,13 @@
      
         
     </div>
-    <div class="col-sm-6" >
+    <div class="col-sm-6 " >
         <div class="card   mb-3">
             <div class="card-header bg-success text-white"><h4>Reporte de visitas del Mes</h4></div>
             <div class="card-body">
-                
+                <div>  
+                    <input type="button" value="Imprimir PDF" (click)="generatePDF()"/>  
+                  </div> 
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label"> reporte de </label>
                     <div class="col-sm-3">
@@ -85,22 +51,22 @@
                     </div>
                     
             </div>
-              <div class="table-responsive">
-                  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+              <div class="table-responsive scroll ">
+                  <table id="table"  class="table table-striped ">
                       <thead>
                         <tr>
                          
-                          <td>Titulo</td>
-                          <td>Institución</td>
-                          <td>Contacto</td>
-                          <td>Niños</td>
-                          <td>Niñas</td>
-                          <td>Telefono</td>
-                          <td>Correo</td>
-                          <td>Fecha</td>
-                          <td>Tiempo</td>
-                          <td>Mujeres</td>
-                          <td>Hombres</td>
+                          <th>Titulo</th>
+                          <th>Institución</th>
+                          <th>Contacto</th>
+                          <th>Niños</th>
+                          <th>Niñas</th>
+                          <th>Telefono</th>
+                          <th>Correo</th>
+                          <th>Fecha</th>
+                          <th>Tiempo</th>
+                          <th>Mujeres</th>
+                          <th>Hombres</th>
             
                         
                         </tr>
@@ -140,7 +106,9 @@
           <div class="card   mb-3">
               <div class="card-header bg-info text-white"><h2>Reporte de visitas por Año</h2></div>
               <div class="card-body">
-                  
+                  <div>  
+                      <input type="button" value="Imprimir PDF" (click)="generatePDF2()"/>  
+                    </div>
                   <div class="form-group row">
                       <label for="inputEmail3" class="col-sm-2 col-form-label">Seleccione reporte de </label>
                       <div class="col-sm-3">
@@ -164,22 +132,22 @@
                       
               </div>
         
-                <div class="table-responsive">
-                    <table datatable [dtOptions]="dt" class="row-border hover">
+                <div class="table-responsive scroll">
+                    <table id="table2" class="table row-border hover ">
                         <thead>
                           <tr>
                            
-                            <td>Titulo</td>
-                            <td>Institución</td>
-                            <td>Contacto</td>
-                            <td>Niños</td>
-                            <td>Niñas</td>
-                            <td>Telefono</td>
-                            <td>Correo</td>
-                            <td>Fecha</td>
-                            <td>Tiempo</td>
-                            <td>Mujeres</td>
-                            <td>Hombres</td>
+                            <th>Titulo</th>
+                            <th>Institución</th>
+                            <th>Contacto</th>
+                            <th>Niños</th>
+                            <th>Niñas</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Fecha</th>
+                            <th>Tiempo</th>
+                            <th>Mujeres</th>
+                            <th>Hombres</th>
               
                           
                           </tr>

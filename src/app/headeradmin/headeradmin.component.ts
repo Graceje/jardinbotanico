@@ -35,12 +35,17 @@ export class HeaderadminComponent implements OnInit {
         console.log(result);
       });  
     },10000);
+
+
   }
 
   recargar(id){
-    this.router.navigateByUrl("/correo/"+id);
- 
-    location.reload();
+    this._notificacionservice.id = id;
+    console.log(id);
+    console.log("ya");
+    console.log( this._notificacionservice.id);
+    this.router.navigateByUrl("/correo");
+
     
   }
   cerrarsesion(){

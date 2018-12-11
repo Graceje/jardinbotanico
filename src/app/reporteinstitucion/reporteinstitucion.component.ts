@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { ReportesService} from '../services/reportes.service';
 declare var jQuery:any;
 declare var $:any;
@@ -14,13 +14,78 @@ export class ReporteinstitucionComponent implements OnInit {
   bailame=null;
   ms;
   an;
+  @ViewChild('dataTable') table;
+  dataTable: any;
+  dtOptions: any;
+  @ViewChild('dataTable2') table2;
+  dataTable2: any;
+  dtOptions2: any;
   constructor(private reporteservice: ReportesService) { }
-  dtOptions: any = {};
+
   ngOnInit() {
-    this.getinst();
-    this.getcinst();
+  
     this.dtOptions = {
-      "ordering": false,
+      "ajax": {
+        url: 'http://localhost/api-jardin/select_reporteinstituion.php',
+        type: 'GET'
+         
+      },
+      columns: [
+          {
+            title: 'Nombre',
+              data: 'nombre'
+          },
+          {
+            title: 'Dirección',
+              data: 'direccion'
+          },
+          {
+            title: 'Localidad',
+              data: 'localidad'
+          },
+          {
+            title: 'Sector',
+              data: 'sector_educativo'
+          }
+      ],
+      dom: 'Bfrtip',
+        buttons: [
+                  'copy',
+                  {
+                      extend: 'excel',
+                      title: 'Reporte'
+                  },
+                  {
+                      extend: 'pdf',
+                      title: 'Reporte'
+                  },
+                  {
+                      extend: 'print',
+                      title: 'Reporte'
+                  }
+              ],
+  };
+  this.dataTable = $(this.table.nativeElement);
+  this.dataTable.DataTable(this.dtOptions);
+
+  
+  this.dtOptions2 = {
+    "ajax": {
+      url: 'http://machiwi.tech/api-jardin/select_reporteCantidadinst.php',
+      type: 'GET'
+       
+    },
+    columns: [
+        {
+          title: 'Institución',
+            data: 'institucion'
+        },
+        {
+          title: 'Cantidad',
+            data: 'cantidad'
+        }
+        
+      ],
       dom: 'Bfrtip',
       buttons: [
                 'copy',
@@ -37,31 +102,11 @@ export class ReporteinstitucionComponent implements OnInit {
                     title: 'Reporte'
                 }
             ],
-      language: {
-        "emptyTable": "Sin resultados encontrados",
-        "info": " _START_ - _END_ / _TOTAL_ ",
-        "infoEmpty": "0-0 /0",
-        "infoFiltered": "",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ registros",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados",
-        "paginate": {
-            "first": "Primero",
-            "last": "Ultimo",
-            "next": "Siguiente",
-            "previous": "Anterior"
-        },
-      }
-
     };
+    this.dataTable2 = $(this.table2.nativeElement);
+    this.dataTable2.DataTable(this.dtOptions2);
   }
-  getinst(){
-    this.reporteservice.get_inst().subscribe(result => this.bailar = result);
-  }
+ 
   getcinst(){
     this.reporteservice.getinst().subscribe(result => this.bailame = result);
   }

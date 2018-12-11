@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {NotificacionesService} from '../services/notificaciones.service';
 @Component({
@@ -8,7 +8,10 @@ import {NotificacionesService} from '../services/notificaciones.service';
 })
 
 export class CorreoComponent implements OnInit {
-
+pid;
+@ViewChild('dataTable') table;
+  dataTable: any;
+  dtOptions: any;
   notis:{
     
     titulo:string,
@@ -38,7 +41,44 @@ export class CorreoComponent implements OnInit {
     }
 
   ngOnInit() {
-      
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      "ajax": {
+        url: 'http://machiwi.tech/api-jardin/select_visitas.php',
+        type: 'GET'
+         
+      },
+      columns: [
+          {
+            title: 'Titulo',
+              data: 'titulo'
+          },
+          {
+            title: 'Institución',
+              data: 'institucion'
+          },
+          {
+            title: 'Fecha',
+              data: 'fecha'
+          },
+          {
+            title: 'Hora',
+              data: 'tiempo'
+          }
+      ],
+     
+  };
+  this.dataTable = $(this.table.nativeElement);
+  this.dataTable.DataTable(this.dtOptions);
+
+    window.setInterval(()=>{
+      if(this.pid != this.notificacionesservice.id){
+        
+      this.pid = this.notificacionesservice.id;
+        this.getnotificacion();
+      }
+    },10);
       
   }
   
@@ -69,7 +109,7 @@ export class CorreoComponent implements OnInit {
     this.notificacionesservice.modificacion(this.notis).subscribe(datos => {
       console.log("nosepuede");
       console.log(datos);
-      if (datos.resultado ==='NOK') {
+      if (datos['resultado'] =='NOK') {
         alert("Hora y dia ocupado, intente de nuevo");
       }else {
         alert("Se registro visita");
@@ -84,7 +124,7 @@ export class CorreoComponent implements OnInit {
       }
     });    
   }
-  getnotificacion(){
+  public getnotificacion(){
     this.notis = {
         
       titulo:'',
@@ -104,9 +144,10 @@ export class CorreoComponent implements OnInit {
       Recinto_educativo: false,
       Jardin_tematico:false
     };
-    var id = this.route.snapshot.params['id'];
-    this.notificacionesservice.notificacioness(id)
-      .subscribe(notisk =>{
+    
+    
+    this.notificacionesservice.notificacioness(this.pid)
+      .subscribe((notisk:any) =>{
         console.log(notisk);
           this.notis = notisk[0];
         for (let i = 1; i < notisk.length+1; i++) {

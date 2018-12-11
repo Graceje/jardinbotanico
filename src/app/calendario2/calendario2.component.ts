@@ -11,7 +11,7 @@ export class Calendario2Component implements OnInit {
   constructor(public reporteservice:ReportesService) { }
 
   ngOnInit() {
-    this.reporteservice.calendario().subscribe(result => {
+    this.reporteservice.calendario().subscribe((result:any) => {
       let evs = Array();
       for (let index = 0; index < result.length; index++) {
         const element = result[index];
