@@ -13,7 +13,7 @@ export class EventosService {
     return this._http.get('http://machiwi.tech/api-jardin/select_eventos.php');
   }
   alta(eventos) {
-    return this._http.post('http://localhost/api-jardin/insert_eventos.php', JSON.stringify(eventos));    
+    return this._http.post('http://machiwi.tech/api-jardin/insert_eventos.php', JSON.stringify(eventos));    
   }
   seleccione(ideventos:number){
     return this._http.post('http://machiwi.tech/api-jardin/seleccione_eventos.php',{'ideventos': ideventos});

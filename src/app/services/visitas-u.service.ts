@@ -24,6 +24,9 @@ export class VisitasUService {
   getinst(){
     return this._http.get('http://machiwi.tech/api-jardin/select_instituciones.php');
   }
+  correo(correo: string){
+    return this._http.post('http://machiwi.tech/api-jardin/correo.php',{'correo': correo});
 
+  }
 
 }

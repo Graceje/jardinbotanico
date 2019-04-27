@@ -26,7 +26,7 @@ export class ReporteinstitucionComponent implements OnInit {
   
     this.dtOptions = {
       "ajax": {
-        url: 'http://localhost/api-jardin/select_reporteinstituion.php',
+        url: 'http://machiwi.tech/api-jardin/select_reporteinstituion.php',
         type: 'GET'
          
       },

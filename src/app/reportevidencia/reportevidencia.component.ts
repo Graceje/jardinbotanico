@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {ReportesService } from '../services/reportes.service';
+import * as jspdf from 'jspdf'; 
+import html2canvas from 'html2canvas'; 
 @Component({
   selector: 'app-reportevidencia',
   templateUrl: './reportevidencia.component.html',
   styleUrls: ['./reportevidencia.component.css']
 })
 export class ReportevidenciaComponent implements OnInit {
+
   ms;
   bailar2=null;
+  bailame=null;
+  
   constructor(private reporteservice: ReportesService ) { }
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
@@ -75,8 +80,9 @@ export class ReportevidenciaComponent implements OnInit {
     });
   }
   evento(){
-  
+    this.getimagenes();
     this.reporteservice.getvisita(this.ms).subscribe(result => this.bailar2 = result);
+    
   
   
    }
@@ -89,5 +95,42 @@ export class ReportevidenciaComponent implements OnInit {
      }
      
    }
+   
+   ya:any;
+   public cargandoImagen(e){
+     this.ya = e.target;
+     console.log("AQUI MERO EMPIEZA LO BUENO");
+     console.log(this.ya);
+
+   }
+
+   subir() {
+    console.log("AQUI MERO EMPIEZA LO BUENO");
+    let img:any = this.ya;
+    let imgArray:Array<File> = img.files;
+    for (let index = 0; index < imgArray.length; index++) {
+      const element = imgArray[index];
+
+      let xxd = new FormData();
+      xxd.set('file', element);
+      xxd.set('folio',this.ms);
+      console.log(xxd.get('file'));
+      this.reporteservice.subirImagenAdmin(xxd).subscribe( datos => {
+        if (datos['resultado']=='OK') {
+          console.log("JALO");
+          console.log(datos);
+          alert("se registro imagenes de evidencia");
+         
+        } else {
+          console.log("NO JALO");
+        }
+      });
+    }
+ 
+  }
+
+  getimagenes(){
+    this.reporteservice.mostrar(this.ms).subscribe(result => this.bailame = result);
+  }
 
 }

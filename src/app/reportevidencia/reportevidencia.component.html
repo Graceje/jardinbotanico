@@ -44,12 +44,12 @@
                     <form class="form-inline">                     
                             <div class="form-group mx-sm-3 mb-2">
                               <label for="inputPassword2" class="sr-only">Password</label>
-                              <input type="text" class="form-control" id="inputPassword2" placeholder="Folio de evento" name="mss" [(ngModel)]="ms" (input)="limpiar()">
+                              <input type="text" class="form-control" id="inputPassword2" placeholder="Folio de evento" name="ms" [(ngModel)]="ms" (input)="limpiar()">
                             </div>
                             <button type="submit" class="btn btn-primary mb-2" (click)="evento()">Buscar</button>
                     </form>
             </div>
-            <div class="table-responsive scroll ">
+            <div class="table-responsive ">
                     <table id="table"  class="table table-striped ">
                         <thead>
                           <tr>
@@ -80,6 +80,33 @@
                                       </tr> 
                         </tbody>
                       </table>
+                </div>
+                <div  class="scroll" style="border-style: inset">
+                        <div  *ngFor="let e of bailame"  id="evidencia" >
+                                <br>
+                               
+                                    <img  src="http://machiwi.tech/api-jardin/{{e.imagen}}" style="width:200px" >
+                                   
+                              
+                              </div>
+                </div>
+               
+                <br>
+                <h6 class="text-center"> Agrega Evidencia del Evento encontrado</h6>
+                <div class="row justify-content-center">
+                    
+                        <form class="form-inline">                     
+                                <div class="form-group mx-sm-3 mb-2">
+                                  
+                                        <div class="custom-file">
+                                                
+                                                  <input type="file" class="form-control" id="imagen" name="file" multiple (change)="cargandoImagen($event)" />
+                                                
+                                            
+                                              </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-2" (click)="subir()">Subir</button>
+                        </form>
                 </div>
 
                

@@ -29,7 +29,7 @@ export class ReportesService {
     return this._http.post('http://machiwi.tech/api-jardin/select_reportevisitaaño.php', {'ano': ano}); 
   }
   getvisita(folio: string){
-    return this._http.post('http://localhost/api-jardin/select_folioeventos.php', {'folio': folio}); 
+    return this._http.post('http://machiwi.tech/api-jardin/select_folioeventos.php', {'folio': folio}); 
   }
   geteventosdia(){
     return this._http.get('http://machiwi.tech/api-jardin/select_reporteEventodia.php');
@@ -47,7 +47,7 @@ export class ReportesService {
   }
 
   calendario(){
-    return this._http.get('http://localhost/api-jardin/select_visitas2.php');
+    return this._http.get('http://machiwi.tech/api-jardin/select_visitas2.php');
 
   }
   calendario2(){
@@ -55,12 +55,25 @@ export class ReportesService {
 
   }
   cantidadarea(){
-    return this._http.get('http://localhost/api-jardin/reporte_eventoarea.php');
+    return this._http.get('http://machiwi.tech/api-jardin/reporte_eventoarea.php');
 
   }
   cantidadC(){
-    return this._http.get('http://localhost/api-jardin/selec_reporteCantidadC.php');
+    return this._http.get('http://machiwi.tech/api-jardin/selec_reporteCantidadC.php');
 
+  }
+  correo(){
+    return this._http.get('http://machiwi.tech/api-jardin/correo.php');
+
+  }
+  subirImagenAdmin(datos:FormData){
+    return this._http.post('http://machiwi.tech/api-jardin/insert_multi.php', datos);
+  }
+
+  mostrar(folio: string){
+    console.log("AQUI MERO");
+    console.log(folio);
+    return this._http.post('http://machiwi.tech/api-jardin/mostrar_img.php', {'folio': folio}); 
   }
  
 

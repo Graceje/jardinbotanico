@@ -40,6 +40,9 @@ import { ReporteinstitucionComponent } from './reporteinstitucion/reporteinstitu
 import { Calendario3Component } from './calendario3/calendario3.component';
 import { EvComponent } from './ev/ev.component';
 import { ReportevidenciaComponent } from './reportevidencia/reportevidencia.component';
+import { InstitucionComponent } from './institucion/institucion.component';
+import { CorreoinstitucionComponent } from './correoinstitucion/correoinstitucion.component';
+
 
 
 const routes: Routes = [
@@ -48,6 +51,7 @@ const routes: Routes = [
   {path: 'eventos', component: EventosComponent},
   {path: 'mapa', component: MapaComponent},
   {path: 'eve', component: EvComponent},
+  {path: 'registro_institucion', component: InstitucionComponent},
   {path: 'vision-mision', component:VisionMisionComponent},
   {path: 'historia', component:HistoriaComponent},
   {path: 'informacion', component:InformacionComponent},
@@ -59,6 +63,7 @@ const routes: Routes = [
   {path: 'calendario', component:CalendarioComponent,canActivate: [AuthService]},
   {path: 'calendario2', component:Calendario2Component},
   {path: 'correo', component:CorreoComponent,canActivate: [AuthService]},
+  {path: 'institucion', component:CorreoinstitucionComponent,canActivate: [AuthService]},
   {path: 'reporte_graficas', component:GraficasComponent,canActivate: [AuthService]},
   {path: 'reporte_visitas', component:ReportevisitasComponent,canActivate: [AuthService]},
   {path: 'reporte_eventos', component:ReporteventosComponent,canActivate: [AuthService]},
@@ -99,6 +104,9 @@ const routes: Routes = [
     Calendario3Component,
     EvComponent,
     ReportevidenciaComponent,
+    InstitucionComponent,
+    CorreoinstitucionComponent,
+   
   
 
   ],

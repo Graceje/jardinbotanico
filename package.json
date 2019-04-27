@@ -36,6 +36,7 @@
     "jquery": "^3.3.1",
     "jspdf": "^1.4.1",
     "jszip": "^3.1.5",
+    "nativescript": "^5.0.3",
     "ng-fullcalendar": "^1.6.2",
     "ng2-charts": "^1.6.0",
     "ng2-opd-popup": "^1.1.21",

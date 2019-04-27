@@ -14,6 +14,8 @@
                   <li class="nav-item" role="presentation">
                     <a class="nav-link" href="#" style="color:rgb(255,255,255);" routerLink="/reporte_evidencia">
                         <i class="fas fa-birthday-cake fa-2x"></i>
+                        
+
                   </a>
                 </li>
                   <li class="dropdown">
@@ -50,6 +52,20 @@
                         </div>
                     </ng-template>
                   </li>
+                  <li class="dropdown" role="presentation">
+                        <a class="dropdown-toggle nav-link dropdown-toggle" style="color:rgb(255,255,255);" data-toggle="dropdown" aria-expanded="false"  >
+                          <i class="fas fa-school fa-2x">            
+                              </i><span *ngIf="no2.length" class="badge badge-pill badge-danger">{{no2.length}}</span>    
+                        </a>
+                      <div class="dropdown-menu" role="menu" *ngIf="no2.length; else nohay">
+                          <a class="dropdown-item"  *ngFor="let no2 of no2" role="presentation" (click)="recargar2(no2.idinstituciones)"  >{{no2.idinstituciones}} - {{no2.nombre}}</a>
+                      </div>
+                      <ng-template #nohay>
+                          <div class="dropdown-menu" role="menu" >
+                              <a class="dropdown-item"  role="presentation" >No hay pendientes</a>    
+                          </div>
+                      </ng-template>
+                    </li>
 
                  
                   <li class="dropdown">

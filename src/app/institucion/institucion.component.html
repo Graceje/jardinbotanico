@@ -1,0 +1,88 @@
+<app-header></app-header>
+<div class="container">
+
+  <div class="row">
+  
+    <div class="col-sm-6">
+    <br>
+    <br>
+    <br>
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                Registro de Institución
+              </div>
+              <div class="card-body">
+                <form #formpro2="ngForm">
+
+                  <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Nombre de Institución:</label>
+                      <i class="fa fa-check-circle check" *ngIf="nombre.valid"></i>
+                      <i class="fa fa-exclamation-circle uncheck" *ngIf="nombre.invalid && nombre.touched"></i>
+                      <input type="text" class="form-control" [(ngModel)]="in.nombre"  name="nombre" ngModel required text #nombre="ngModel">
+                      <p class="alert alert-danger" *ngIf="nombre.invalid && nombre.touched">
+                              Por favor introduzca Nombre
+                          </p>
+                      </div>
+                      <div class="row">
+                              <div class="col">
+                                      <i class="fa fa-check-circle check" *ngIf="direccion.valid"></i>
+                                      <i class="fa fa-exclamation-circle uncheck" *ngIf="direccion.invalid && direccion.touched"></i>
+                              <input class="form-control" type="text" placeholder="Dirección" [(ngModel)]="in.direccion"  id="direccion"   name="direccion" ngModel required text #direccion="ngModel">
+                              <p class="alert alert-danger" *ngIf="direccion.invalid && direccion.touched">
+                                      Por favor introduzca dirección
+                                  </p>
+                          </div>
+                              <div class="col">
+                                      <i class="fa fa-check-circle check" *ngIf="localidad.valid"></i>
+                                      <i class="fa fa-exclamation-circle uncheck" *ngIf="localidad.invalid && localidad.touched"></i>
+                                  <input class="form-control" placeholder="Localidad" type="text" [(ngModel)]="in.localidad"   name="localidad" ngModel required text #localidad="ngModel">
+                                  <p class="alert alert-danger" *ngIf="localidad.invalid && localidad.touched">
+                                          Por favor introduzca Localidad
+                                      </p>
+                              </div>
+                      </div>
+                      <div class="row">
+                          <div class="col">
+                              <label for="message-text" class="col-form-label">Sector Educativo:</label>
+                              <i class="fa fa-check-circle check" *ngIf="sector_educativo.valid"></i>
+                              <i class="fa fa-exclamation-circle uncheck" *ngIf="sector_educativo.invalid && sector_educativo.touched"></i>
+                              <select id="inputState" class="form-control" id="sector_educativo"   [(ngModel)]="in.sector_educativo" name="sector_educativo"  ngModel required text #sector_educativo="ngModel" >
+                              
+                              <option value="publico" >Publico</option>
+                              <option value="privado" >Privado</option>
+                              </select>
+                              <p class="alert alert-danger" *ngIf="sector_educativo.invalid && sector_educativo.touched">
+                                      Por favor introduzca sector educativo
+                                  </p>
+                          </div>
+                          <div class="col">
+                              <label for="message-text" class="col-form-label">Telefono:</label>
+                              <i class="fa fa-check-circle check" *ngIf="telefono.valid"></i>
+                              <i class="fa fa-exclamation-circle uncheck" *ngIf="telefono.invalid && telefono.touched"></i>
+                              <input class="form-control" placeholder="Telefono" type="tel" [(ngModel)]="in.telefono"   name="telefono" ngModel required text #telefono="ngModel">
+                              <p class="alert alert-danger" *ngIf="telefono.invalid && telefono.touched">
+                                      Por favor introduzca Telefono
+                              </p>
+                          </div>
+                              
+                      </div>
+                      <button type="button" class="btn btn-primary" (click)="altainst()" [disabled]= "!formpro2.valid" >Guardar</button>
+                  </form>
+                </div>
+        </div>
+
+       
+    </div>
+    <div class="col-sm-6">
+      <br>
+      <br>
+      <h4 class="text-center">Tabla de instituciones registradas</h4>
+      <br>
+        <div class="table-responsive scroll2">
+            <table #dataTable class="display" style="width:100%"></table>
+        </div>
+    </div>
+  </div>
+ 
+
+</div>

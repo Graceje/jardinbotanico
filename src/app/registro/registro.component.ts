@@ -80,6 +80,9 @@ export class RegistroComponent implements OnInit {
   
   
     }
+    this.visitasuService.correo(this.vis.correo).subscribe(datos => {
+      alert(datos['resultado']);
+    });
   }
   altainst() {
 
